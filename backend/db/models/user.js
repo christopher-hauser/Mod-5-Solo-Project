@@ -29,8 +29,20 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
-    }
+    },
+    host: {
+      type: DataTypes.STRING.BOOLEAN,
+      allowNull: false
+    },
+    guest: {
+      type: DataTypes.STRING.BOOLEAN,
+      allowNull: false
+    },
+    profileImg: {
+      type: DataTypes.STRING
+    },
   },
+
   {
     defaultScope: {
       attributes: {
