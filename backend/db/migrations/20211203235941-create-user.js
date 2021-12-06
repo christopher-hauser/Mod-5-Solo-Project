@@ -31,8 +31,7 @@ module.exports = {
         allowNull: false
       },
       host: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
+        type: Sequelize.BOOLEAN
       },
       profileImg: {
         type: Sequelize.STRING
