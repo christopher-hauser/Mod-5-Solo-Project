@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    firstName: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,11 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     host: {
-      type: DataTypes.STRING.BOOLEAN,
-      allowNull: false
-    },
-    guest: {
-      type: DataTypes.STRING.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     },
     profileImg: {
@@ -60,7 +64,10 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Spot, {foreignKey: 'userId'})
+    User.hasMany(models.Booking, {foreignKey: 'userId'})
+    User.hasMany(models.Review, {foreignKey: 'userId'})
+    User.hasMany(models.Image, {foreignKey: 'userId'})
   };
 
   User.prototype.toSafeObject = function() {
