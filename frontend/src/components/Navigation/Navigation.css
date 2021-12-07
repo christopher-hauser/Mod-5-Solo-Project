@@ -48,3 +48,20 @@ nav {
     font-weight: 700;
 
 }
+
+#sign-up {
+    margin-right: 50px;
+    transition: 1s;
+}
+
+#sign-up:hover {
+    color: rgb(243, 43, 76);
+    text-decoration: underline;
+}
+
+#log-in-nav-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}

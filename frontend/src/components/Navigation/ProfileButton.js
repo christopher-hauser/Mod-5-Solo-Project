@@ -33,8 +33,8 @@ function ProfileButton({ user }) {
   console.log(user)
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button onClick={openMenu} id='profile-button'>
+        <i className="fas fa-user-circle"/>
       </button>
       {/* <img src={`${user.profileImg}`} /> */}
       {showMenu && (

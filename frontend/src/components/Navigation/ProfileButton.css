@@ -3,7 +3,7 @@
     height: 125px;
     border: 0.5px solid rgb(230, 230, 230);
     background-color: white;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow: 2px 2px 2px lightgray;
     display: flex;
     justify-content: space-between;
@@ -16,10 +16,42 @@
 
 .profile-dropdown li {
     padding-top: 10px;
+    border-bottom: 0.5px solid lightgray;
 }
 
 #log-out {
-    all: unset;
-    color: rgb(235, 74, 100);
+    background-color: white;
+    border: none;
+    color: rgb(240, 128, 146);
+    font-family: 'Quicksand', 'san-serif';
     font-weight: 700;
+    font-size: large;
+    transition: 0.25s;
+}
+
+#log-out:hover {
+    cursor: pointer;
+    color: rgb(243, 43, 76);
+}
+
+#profile-button {
+    border: none;
+    background-color: white;
+    height: 30px;
+}
+
+#log-in {
+    background-color: white;
+    border: none;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'san-serif';
+    font-weight: 500;
+    font-size: larger;
+    transition: 0.25s;
+}
+
+#log-in:hover {
+    cursor: pointer;
+    color: rgb(243, 43, 76);
+    text-decoration: underline;
 }
