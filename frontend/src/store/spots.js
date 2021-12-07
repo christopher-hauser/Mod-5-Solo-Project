@@ -45,7 +45,7 @@ const spotsReducer = (state = {}, action) => {
         case ADD_SPOT:
             newState = {
                 ...state,
-                [action.spot.id]: action.spot
+                [action.payload.spot.id]: action.payload.spot
             }
             return newState;
         default:

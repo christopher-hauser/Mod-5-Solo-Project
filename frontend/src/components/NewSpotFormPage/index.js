@@ -23,12 +23,15 @@ function NewSpotFormPage() {
     const handleSubmit = e => {
         e.preventDefault();
         setErrors([]);
-        dispatch(spotActions.addNewSpot({ hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities }))
+        history.push('/');
+        return dispatch(spotActions.addNewSpot({ hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities }))
             .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                if (res) {
+                    console.log(res);
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                }
             })
-        return <Redirect to='/' />
     }
 
 
