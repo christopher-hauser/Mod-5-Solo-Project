@@ -12,26 +12,34 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <ProfileButton user={sessionUser} />
-      <NavLink to="/host-your-spot">Host Your Spot</NavLink>
+      <div className='nav-right'>
+        <NavLink to="/host-your-spot" className='nav-item'>Host Your Spot</NavLink>
+        <ProfileButton user={sessionUser} />
+      </div>
       </>
     );
 } else {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/signup" className='nav-item'>Sign Up</NavLink>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <nav className='nav-container'>
+      <ul>
+        <li>
+          <NavLink exact to="/" className='nav-item'>
+            <img src='https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'
+            id='home-logo'
+            />
+          </NavLink>
+        </li>
+      </ul>
+          {isLoaded && sessionLinks}
+    </nav>
   );
 }
 

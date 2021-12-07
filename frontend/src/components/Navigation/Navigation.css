@@ -1,3 +1,27 @@
 ul {
     list-style-type: none;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6em;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.nav-item {
+    font-size: larger;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgb(235, 74, 100)
+}
+
+.nav-left {
+    text-decoration: none;
+}
+
+#home-logo {
+    height: 50px;
 }

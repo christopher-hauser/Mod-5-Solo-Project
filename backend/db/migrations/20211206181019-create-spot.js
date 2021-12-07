@@ -52,7 +52,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       profileImg: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1000)
       },
       createdAt: {
         allowNull: false,

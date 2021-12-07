@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     profileImg: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
     }
   }, {});
 

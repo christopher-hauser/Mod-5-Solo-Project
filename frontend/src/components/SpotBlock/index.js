@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import * as spotActions from "../../store/spots";
+import React from "react";
 
 import './SpotBlock.css'
 

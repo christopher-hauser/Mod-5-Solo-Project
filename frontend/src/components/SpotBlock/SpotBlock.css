@@ -1,9 +1,9 @@
 .spot-block {
     display: flex;
     flex-direction: column;
-    height: 25em;
+    height: 24em;
     width: 20em;
-    margin: 2em
+    margin: 2em 1em 0em 1em;
 }
 
 .spot-block-img {
