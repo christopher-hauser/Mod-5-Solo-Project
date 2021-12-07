@@ -1,0 +1,52 @@
+#login-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 8em;
+    width: 24em;
+    margin: 2em;
+    padding: 0em 3em 6em 3em;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+}
+
+#login-popup label {
+    font-size: larger;
+}
+
+#login-popup input {
+    margin-top: 10px;
+    border: 0.5px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+#login-popup button {
+    margin-top: 25px;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'san-serif';
+    font-weight: 500;
+    font-size: larger;
+    align-items: flex-start;
+    transition: 0.5s;
+}
+
+#login-popup button:hover {
+    background-color: rgb(243, 43, 76);
+    color: white;
+}
+
+#login-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form label {
+    display: flex;
+    flex-direction: column;
+    /* margin-bottom: 10px; */
+}
