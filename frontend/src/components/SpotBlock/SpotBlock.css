@@ -1,0 +1,26 @@
+.spot-block {
+    display: flex;
+    flex-direction: column;
+    height: 25em;
+    width: 20em;
+    margin: 2em
+}
+
+.spot-block-img {
+    height: 20em;
+    width: 20em;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 3px 2px 2px lightgray;
+}
+
+.spot-block-text {
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 1em;
+    align-items: center;
+}
+
+p {
+    font-size: larger
+}

@@ -1,17 +1,21 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import * as spotActions from "../../store/spots";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as spotActions from "../../store/spots";
 
-// import './SpotBlock.css'
+import './SpotBlock.css'
 
-// function SpotBlock({ spot }) {
-//     return (
-//         <div key={spot.id}>
-//             <img src={spot.profileImg} />
-//             <h2>{spot.city}, {spot.state}</h2>
-//             <p>${spot.pricePerNight} / night</p>
-//         </div>
-//     )
-// }
+function SpotBlock({ spot }) {
+    return (
+        <div key={spot.id} className="spot-block">
+            <div className='spot-block-img-block'>
+                <img src={spot.profileImg} className="spot-block-img"/>
+            </div>
+            <div className="spot-block-text">
+                <h2 className="spot-block-location">{spot.city}, {spot.state}</h2>
+                <p className="spot-block-price">${spot.pricePerNight} / night</p>
+            </div>
+        </div>
+    )
+}
 
-// export default SpotBlock;
+export default SpotBlock;
