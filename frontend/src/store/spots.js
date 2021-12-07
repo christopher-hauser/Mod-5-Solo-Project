@@ -62,6 +62,7 @@ export const getAllSpots = () => async dispatch => {
 
 //REDUCER
 
+
 const spotsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {

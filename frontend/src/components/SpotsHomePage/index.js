@@ -11,24 +11,23 @@ function SpotsHomePage() {
 
     useEffect(() => {
         dispatch(spotActions.getAllSpots())
-        if(!spots) {
+        if (!spots) {
             return null;
         }
     }, [dispatch])
 
-
     return (
         <main>
             <div>
-            {spots.map(spot => {
-                return (
-                    <div key={spot.id}>
-                        <img src={spot.profileImg} />
-                        <h2>{spot.city}, {spot.state}</h2>
-                        <p>${spot.pricePerNight} / night</p>
-                    </div>
-                )
-            })}
+                {spots.length && spots.map(spot => {
+                    return (
+                        <div key={spot.id}>
+                            <img src={spot.profileImg} />
+                            <h2>{spot.city, spot.state}</h2>
+                            <p>${spot.pricePerNight} / night</p>
+                        </div>
+                    )
+                })}
             </div>
         </main>
     )
