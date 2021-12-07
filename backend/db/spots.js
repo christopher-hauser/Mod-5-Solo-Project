@@ -1,6 +1,6 @@
 const { Spot } = require('./models');
 
-async function addNewSpot(hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities) {
+async function addNewSpot(hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg) {
     const spot = await Spot.create({
         hostId,
         address,
@@ -11,7 +11,8 @@ async function addNewSpot(hostId, address, city, state, pricePerNight, bedrooms,
         beds,
         bathrooms,
         description,
-        amenities
+        amenities,
+        profileImg
     })
     return await Spot.findByPk(spot.id);
 }

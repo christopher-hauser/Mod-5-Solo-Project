@@ -20,6 +20,9 @@ const validateNewSpot = [
     check('state')
         .exists({ checkFalsy: true })
         .withMessage('Please select the state your spot is in.'),
+    check('state')
+        .isLength({ min: 2, max: 2})
+        .withMessage('Please enter the abbreviated version of your state\'s name.'),
     check('pricePerNight')
         .exists({ checkFalsy: true })
         .withMessage('Please provide the amount you will charge per night to stay at your spot.'),
@@ -42,9 +45,8 @@ router.post(
     requireAuth,
     validateNewSpot,
     asyncHandler(async (req, res) => {
-        const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities } = req.body;
-        console.log('in post route', hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities)
-        const spot = await addNewSpot(hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities)
+        const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = req.body;
+        const spot = await addNewSpot(hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
 
         return res.json({
             spot

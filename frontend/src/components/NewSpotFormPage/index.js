@@ -18,20 +18,22 @@ function NewSpotFormPage() {
     const [bathrooms, setBathrooms] = useState(0);
     const [description, setDescription] = useState("");
     const [amenities, setAmenities] = useState("");
+    const [profileImg, setProfileImg] = useState("");
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = e => {
         e.preventDefault();
         setErrors([]);
-        history.push('/');
-        return dispatch(spotActions.addNewSpot({ hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities }))
+        dispatch(spotActions.addNewSpot({ hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg }))
             .catch(async (res) => {
-                if (res) {
-                    console.log(res);
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
+                const data = await res.json();
+                if (data && data.errors) {
+                    setErrors(data.errors)
                 }
             })
+        if (!errors.length) {
+            history.push('/');
+        }
     }
 
 
@@ -121,6 +123,16 @@ function NewSpotFormPage() {
                     onChange={(e) => setAmenities(e.target.value)}
                 />
             </label>
+            <label>
+                Show us your place!
+                <input
+                    type="text"
+                    value={profileImg}
+                    placeholder='Image URL'
+                    onChange={(e) => setProfileImg(e.target.value)}
+                />
+            </label>
+
             <button type="submit">Host your spot!</button>
         </form>
     )

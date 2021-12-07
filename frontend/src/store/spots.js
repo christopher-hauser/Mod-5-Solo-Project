@@ -14,8 +14,7 @@ const addSpot = spot => {
 }
 
 export const addNewSpot = newSpot => async dispatch => {
-    const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities } = newSpot;
-    console.log('in addNewSpot', hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities)
+    const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = newSpot;
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: {
@@ -31,7 +30,8 @@ export const addNewSpot = newSpot => async dispatch => {
             beds,
             bathrooms,
             description,
-            amenities
+            amenities,
+            profileImg
         })
     });
     const spot = await response.json();

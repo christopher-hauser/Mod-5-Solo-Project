@@ -43,6 +43,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     rating: {
       type: DataTypes.INTEGER
+    },
+    profileImg: {
+      type: DataTypes.STRING,
     }
   }, {});
 
