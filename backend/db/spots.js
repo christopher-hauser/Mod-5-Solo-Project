@@ -17,6 +17,12 @@ async function addNewSpot(hostId, address, city, state, pricePerNight, bedrooms,
     return await Spot.findByPk(spot.id);
 }
 
+async function getAllSpots() {
+    const spots = await Spot.findAll();
+    return spots;
+}
+
 module.exports = {
-    addNewSpot
+    addNewSpot,
+    getAllSpots
 }

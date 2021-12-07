@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { addNewSpot } = require('../../db/spots')
+const { addNewSpot, getAllSpots } = require('../../db/spots')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -53,5 +53,13 @@ router.post(
         });
     })
 );
+
+router.get(
+    '/',
+    asyncHandler(async (req, res) => {
+        const spots = await getAllSpots()
+        return res.json(spots);
+    })
+)
 
 module.exports = router;

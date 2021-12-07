@@ -1,10 +1,12 @@
 import { csrfFetch } from "./csrf";
 
 export const ADD_SPOT = 'spots/addSpot'
-export const GET_ALL_SPOTS = 'spots/getAllSpots'
-export const GET_SPOT = 'spots/getSpot'
-export const UPDATE_SPOT = 'spots/updateSpot'
-export const DELETE_SPOT = 'spots/deleteSpot'
+export const LOAD_ALL_SPOTS = 'spots/getAllSpots'
+// export const GET_SPOT = 'spots/getSpot'
+// export const UPDATE_SPOT = 'spots/updateSpot'
+// export const DELETE_SPOT = 'spots/deleteSpot'
+
+// ACTIONS
 
 const addSpot = spot => {
     return {
@@ -12,6 +14,15 @@ const addSpot = spot => {
         payload: spot
     }
 }
+
+const loadAllSpots = spots => {
+    return {
+        type: LOAD_ALL_SPOTS,
+        payload: spots
+    }
+}
+
+// THUNK ACTIONS
 
 export const addNewSpot = newSpot => async dispatch => {
     const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = newSpot;
@@ -39,6 +50,18 @@ export const addNewSpot = newSpot => async dispatch => {
     return spot;
 }
 
+export const getAllSpots = () => async dispatch => {
+    const response = await csrfFetch('/api/spots')
+
+    if (response.ok) {
+        const spots = await response.json();
+        dispatch(loadAllSpots(spots))
+    }
+    return response;
+}
+
+//REDUCER
+
 const spotsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -47,6 +70,9 @@ const spotsReducer = (state = {}, action) => {
                 ...state,
                 [action.payload.spot.id]: action.payload.spot
             }
+            return newState;
+        case LOAD_ALL_SPOTS:
+            newState = action.payload
             return newState;
         default:
             return state;
