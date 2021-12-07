@@ -12,9 +12,13 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <div className='nav-right'>
-        <NavLink to="/host-your-spot" className='nav-item'>Host Your Spot</NavLink>
-        <ProfileButton user={sessionUser} />
+      <div id='nav-right'>
+        <div>
+          <NavLink to="/host-your-spot" className='nav-item' id='host-your-spot'>Host Your Spot</NavLink>
+        </div>
+        <div>
+          <ProfileButton user={sessionUser} />
+        </div>
       </div>
       </>
     );
@@ -31,10 +35,11 @@ function Navigation({ isLoaded }){
     <nav className='nav-container'>
       <ul>
         <li>
-          <NavLink exact to="/" className='nav-item'>
+          <NavLink exact to="/" className='nav-item' id='home'>
             <img src='https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'
             id='home-logo'
             />
+            <p id="rairbnb">Rairbnb</p>
           </NavLink>
         </li>
       </ul>

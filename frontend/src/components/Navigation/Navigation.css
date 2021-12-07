@@ -22,6 +22,29 @@ nav {
     text-decoration: none;
 }
 
+#nav-right {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 100px;
+    width: 200px;
+}
+
 #home-logo {
     height: 50px;
+}
+
+#home {
+    display: flex;
+    align-items: center;
+}
+
+#rairbnb {
+    font-weight: 700;
+    font-size: larger;
+    padding-left: 10px;
+}
+
+#host-your-spot {
+    font-weight: 700;
+
 }

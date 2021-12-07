@@ -22,7 +22,7 @@ function SpotsHomePage() {
             <div className="spots-container">
                 {spots.length && spots.map(spot => {
                     return (
-                        <SpotBlock spot={spot} />
+                        <SpotBlock spot={spot} key={spot.id}/>
                     )
                 })}
             </div>
