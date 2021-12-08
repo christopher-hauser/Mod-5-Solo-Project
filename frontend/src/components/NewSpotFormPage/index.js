@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as spotActions from "../../store/spots";
@@ -31,12 +31,12 @@ function NewSpotFormPage() {
                     setErrors(data.errors)
                 }
             })
-            console.log(errors);
+        // console.log(errors);
         if (!errors.length) {
             history.push('/');
         }
     }
-
+    
     return (
         <form onSubmit={handleSubmit} id='add-spot-form'>
             <h2>Tell us about the spot you'd like to host.</h2>

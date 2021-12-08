@@ -39,6 +39,7 @@ function Navigation({ isLoaded }){
         <li>
           <NavLink exact to="/" className='nav-item' id='home'>
             <img src='https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'
+            alt='rairbnb home logo'
             id='home-logo'
             />
             <p id="rairbnb">Rairbnb</p>

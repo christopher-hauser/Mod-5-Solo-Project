@@ -1,7 +1,6 @@
-.add-spot-error-list {
+#add-spot-error-list {
     display: flex;
     flex-direction: column;
-    padding-inline-start: 0px;
     color:rgb(243, 43, 76);
 }
 
