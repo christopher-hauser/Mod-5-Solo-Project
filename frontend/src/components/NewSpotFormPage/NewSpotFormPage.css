@@ -1,0 +1,89 @@
+.add-spot-error-list {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 0px;
+    color:rgb(243, 43, 76);
+}
+
+#info-container {
+    display: flex;
+    flex-direction: column;
+    margin: 3% 30% 3% 30%;
+}
+
+#add-spot-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 20% 5% 20%;
+
+}
+
+#add-spot-form label {
+    font-size: larger;
+    margin-right: 5%;
+}
+
+#add-spot-form input {
+    margin: 10px 2%;
+    border: 0.5px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    /* width: 100%; */
+}
+
+#location-container {
+    margin: 5% 0%;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#spot-info-container {
+    margin: 5% 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#spot-info-container label {
+    align-self: flex-start;
+}
+
+.number-input {
+    width: 15%;
+}
+
+#add-spot-form textarea {
+    width: 500px;
+    height: 250px;
+}
+
+#combined-info-container {
+    display: flex;
+}
+
+#submit-new-spot {
+    margin-top: 25px;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'san-serif';
+    font-weight: 500;
+    font-size: larger;
+    align-items: flex-start;
+    transition: 0.5s;
+    padding: 10px;
+}
+
+#submit-new-spot:hover {
+    background-color: rgb(243, 43, 76);
+    color: white;
+    cursor: pointer;
+}
+
+#amenities-input {
+    width: 365px;
+}
