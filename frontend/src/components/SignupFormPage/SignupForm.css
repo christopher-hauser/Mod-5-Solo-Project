@@ -1,0 +1,65 @@
+#register-form {
+    display: flex;
+    flex-direction: column;
+    margin: 5em 30em;
+    /* background-color: white; */
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    border-radius: 15px;
+    border: 1px solid rgb(170, 170, 170);
+    box-shadow: 5px 5px 5px lightgray;
+}
+
+#register-form label {
+    font-size: x-large;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid lightgray;
+    width: 100%;
+}
+
+#register-form input {
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+    border: none;
+    font-family: 'Quicksand', 'sans-serif';
+    font-size: large;
+    padding: 5px 0px 5px 10px;
+    background-color: transparent;
+
+}
+
+#register-form button {
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'san-serif';
+    font-weight: 500;
+    font-size: x-large;
+    font-weight: 700;
+    transition: 0.25s;
+    width: 200px;
+    margin-top: 10px;
+    padding: 5px;
+    transition: 1s;
+    align-self: center;
+}
+
+#register-form button:hover {
+    cursor: pointer;
+    background-color: rgb(243, 43, 76);
+    color: white;
+}
+
+#signup-error-list {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 0px;
+    color:rgb(243, 43, 76)
+}
+
+.signup-error {
+    padding: 5px 0px;
+}

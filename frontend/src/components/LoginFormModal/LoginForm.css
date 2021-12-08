@@ -2,20 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 8em;
+    height: 16em;
     width: 24em;
     margin: 2em;
-    padding: 0em 3em 6em 3em;
+    padding: 0em 3em 3em 3em;
     border: 1px solid rgb(243, 43, 76);
     border-radius: 5px;
 }
 
 #login-popup label {
     font-size: larger;
+    width: 300px;
 }
 
 #login-popup input {
     margin-top: 10px;
+    margin-bottom: 10px;
     border: 0.5px solid lightgray;
     border-radius: 5px;
     padding: 3px;
@@ -43,10 +45,22 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
 #login-form label {
     display: flex;
     flex-direction: column;
     /* margin-bottom: 10px; */
+}
+
+#login-error-list {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 0px;
+    color:rgb(243, 43, 76)
+}
+
+.login-errors {
+    padding-inline-start: 0px;
 }

@@ -23,9 +23,9 @@ function LoginForm() {
   return (
     <div id='login-popup'>
       <form onSubmit={handleSubmit} id="login-form">
-        <ul>
+        <ul id='login-error-list'>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li key={idx} className='login-form-errors'>{error}</li>
           ))}
         </ul>
         <div>
