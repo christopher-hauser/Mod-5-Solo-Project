@@ -30,7 +30,6 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
-  console.log(user)
   return (
     <>
       <button onClick={openMenu} id='profile-button'>

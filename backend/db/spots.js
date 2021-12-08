@@ -22,7 +22,13 @@ async function getAllSpots() {
     return spots;
 }
 
+async function getOneSpot(id) {
+    const spot = await Spot.findByPk(id);
+    return spot;
+}
+
 module.exports = {
     addNewSpot,
-    getAllSpots
+    getAllSpots,
+    getOneSpot
 }

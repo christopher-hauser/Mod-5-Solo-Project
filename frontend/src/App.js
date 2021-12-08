@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import NewSpotFormPage from "./components/NewSpotFormPage";
 import SpotsHomePage from "./components/SpotsHomePage";
+import Spot from './components/SpotPage'
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/host-your-spot">
             <NewSpotFormPage />
+          </Route>
+          <Route path="spots/:id">
+            <Spot />
           </Route>
         </Switch>
       )}
