@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import * as spotActions from '../../store/spots'
+import * as spotActions from "../../store/spots";
 
 import './SpotPage.css'
 
 function Spot() {
-    console.log('in spot')
     const dispatch = useDispatch();
-    const spotId = useParams();
-    const spot = dispatch(spotActions.getOneSpot(spotId))
+    const id = useParams().id;
 
+    useEffect(() => {
+        dispatch(spotActions.getOneSpot(id));
+    }, [dispatch])
+
+    const spot = useSelector(state => state.spots)
     return (
         <div key={spot.id} className="spot-container">
             <div>

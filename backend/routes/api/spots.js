@@ -65,7 +65,7 @@ router.get(
 router.get(
     '/:id',
     asyncHandler(async (req, res) => {
-        const id = req.params();
+        const id = req.params.id;
         const spot = await getOneSpot(id);
         return res.json(spot);
     })

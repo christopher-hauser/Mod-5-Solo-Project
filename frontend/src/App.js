@@ -29,7 +29,7 @@ function App() {
           <Route path="/host-your-spot">
             <NewSpotFormPage />
           </Route>
-          <Route path="spots/:id">
+          <Route path="/spots/:id">
             <Spot />
           </Route>
         </Switch>
