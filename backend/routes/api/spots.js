@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { addNewSpot, getAllSpots, getOneSpot } = require('../../db/spots')
+const { addNewSpot, getAllSpots, getOneSpot, updateSpot, deleteSpot } = require('../../db/spots')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -68,6 +68,28 @@ router.get(
         const id = req.params.id;
         const spot = await getOneSpot(id);
         return res.json(spot);
+    })
+)
+
+router.put(
+    '/:id',
+    asyncHandler(async (req, res) => {
+        const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = req.body;
+        const updatedSpot = await updateSpot(id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
+        return res.json({
+            updatedSpot
+        })
+    })
+)
+
+router.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
+        const id = req.params.id;
+        await deleteSpot(id);
+        return res.json({
+            message: 'Spot successfully deleted.'
+        })
     })
 )
 

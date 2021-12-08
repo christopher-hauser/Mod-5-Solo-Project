@@ -1,7 +1,7 @@
 .spot-block {
     display: flex;
     flex-direction: column;
-    height: 24em;
+    height: 30em;
     width: 20em;
     margin: 2em 1em 0em 1em;
 }

@@ -3,8 +3,8 @@ import { csrfFetch } from "./csrf";
 export const ADD_SPOT = 'spots/addSpot'
 export const LOAD_ALL_SPOTS = 'spots/getAllSpots'
 export const GET_SPOT = 'spots/getSpot'
-// export const UPDATE_SPOT = 'spots/updateSpot'
-// export const DELETE_SPOT = 'spots/deleteSpot'
+export const UPDATE_SPOT = 'spots/updateSpot'
+export const DELETE_SPOT = 'spots/deleteSpot'
 
 // ACTIONS
 
@@ -26,6 +26,19 @@ const getSpot = spot => {
     return {
         type: GET_SPOT,
         payload: spot
+    }
+}
+
+const updateSpot = spot => {
+    return {
+        type: UPDATE_SPOT,
+        payload: spot
+    }
+}
+
+const deleteSpot = () => {
+    return {
+        type: DELETE_SPOT,
     }
 }
 
@@ -78,6 +91,42 @@ export const getOneSpot = (id) => async dispatch => {
     return response;
 }
 
+export const updateOneSpot = (updatedSpot) => async dispatch => {
+    const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = updatedSpot;
+    console.log(id);
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id,
+            hostId,
+            address,
+            city,
+            state,
+            pricePerNight,
+            bedrooms,
+            beds,
+            bathrooms,
+            description,
+            amenities,
+            profileImg
+        })
+    });
+    const spot = await response.json();
+    dispatch(updateSpot(spot));
+    return spot;
+}
+
+export const deleteOneSpot = (id) => async dispatch => {
+    const response = await csrfFetch(`api/spots/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch(deleteSpot());
+    return response;
+}
+
 //REDUCER
 
 
@@ -96,6 +145,11 @@ const spotsReducer = (state = {}, action) => {
         case GET_SPOT:
             newState = action.payload;
             return newState;
+        case UPDATE_SPOT:
+            newState = action.payload;
+            return newState;
+        case DELETE_SPOT:
+            return {};
         default:
             return state;
     }

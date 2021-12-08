@@ -7,6 +7,7 @@ import SpotsHomePage from "./components/SpotsHomePage";
 import Spot from './components/SpotPage'
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import UpdateSpotForm from "./components/UpdateSpotForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,8 +30,11 @@ function App() {
           <Route path="/host-your-spot">
             <NewSpotFormPage />
           </Route>
-          <Route path="/spots/:id">
+          <Route path="/spots/:id" exact>
             <Spot />
+          </Route>
+          <Route path="/spots/:id/update">
+            <UpdateSpotForm />
           </Route>
         </Switch>
       )}

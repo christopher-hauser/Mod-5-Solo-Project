@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {NavLink} from 'react-router-dom'
 
 import './SpotBlock.css'
 
 function SpotBlock({ spot }) {
+    const sessionUserId = useSelector((state) => state.session.user.id);
+
     return (
         <div
         key={spot.id}
@@ -23,6 +26,14 @@ function SpotBlock({ spot }) {
                 <h2 className="spot-block-location">{spot.city}, {spot.state}</h2>
                 <p className="spot-block-price">${spot.pricePerNight} / night</p>
             </div>
+
+            <NavLink to={`/spots/${spot.id}/update`}>
+                {spot.hostId === sessionUserId && (
+                <div>
+                    <p>This is your spot! Update?</p>
+                </div>
+                )}
+            </NavLink>
         </div>
     )
 }

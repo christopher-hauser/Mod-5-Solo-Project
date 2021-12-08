@@ -27,8 +27,34 @@ async function getOneSpot(id) {
     return spot;
 }
 
+async function updateSpot(id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg) {
+    console.log('id', id);
+    const spot = await Spot.findByPk(id);
+    console.log('spot', spot);
+    const updatedSpot = await spot.update({
+        hostId,
+        address,
+        city,
+        state,
+        pricePerNight,
+        bedrooms,
+        beds,
+        bathrooms,
+        description,
+        amenities,
+        profileImg
+    })
+    return updatedSpot;
+}
+
+async function deleteSpot(id) {
+    return await Spot.findByPk(id).delete();
+}
+
 module.exports = {
     addNewSpot,
     getAllSpots,
-    getOneSpot
+    getOneSpot,
+    updateSpot,
+    deleteSpot
 }

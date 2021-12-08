@@ -14,6 +14,7 @@ function Spot() {
     }, [dispatch])
 
     const spot = useSelector(state => state.spots)
+    
     return (
         <div key={spot.id} className="spot-container">
             <div>
