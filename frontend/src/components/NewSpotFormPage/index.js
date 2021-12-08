@@ -24,19 +24,19 @@ function NewSpotFormPage() {
     const handleSubmit = async e => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(spotActions.addNewSpot({ hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg }))
+        const added = await dispatch(spotActions.addNewSpot({ hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg }))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) {
                     setErrors(data.errors)
                 }
             })
-        // console.log(errors);
-        if (!errors.length) {
+
+        if (added) {
             history.push('/');
         }
     }
-    
+
     return (
         <form onSubmit={handleSubmit} id='add-spot-form'>
             <h2>Tell us about the spot you'd like to host.</h2>
