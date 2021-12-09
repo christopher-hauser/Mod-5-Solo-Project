@@ -12,12 +12,12 @@
     object-fit: cover;
     border-radius: 5px;
     box-shadow: 4px 3px 4px rgb(161, 161, 161);
-    opacity: 80%;
+    opacity: .8;
     transition: .5s;
 }
 
 .spot-block-img:hover {
-    opacity: 100%;
+    opacity: 1.0;
 }
 
 .spot-block-text {

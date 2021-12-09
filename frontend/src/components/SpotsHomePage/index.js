@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as spotActions from "../../store/spots";
 import SpotBlock from "../SpotBlock";
@@ -16,6 +15,7 @@ function SpotsHomePage() {
         if (!spots) {
             return null;
         }
+        return;
     }, [dispatch])
 
     const spotsArr = Object.values(spots);
