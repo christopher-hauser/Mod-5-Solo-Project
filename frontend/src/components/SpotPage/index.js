@@ -14,28 +14,37 @@ function Spot() {
     }, [dispatch])
 
     const spot = useSelector(state => state.spots)
-    
+
     return (
-        <div key={spot.id} className="spot-container">
+        <div key={spot.id} id="spot-container">
             <div>
-                <h2>{spot.description}</h2>
+                <h2 id='spot-title'>{spot.description}</h2>
                 <h3>{spot.address} {spot.city}, {spot.state}</h3>
             </div>
-            <div className='spot-page-img'>
+            <div id='images-container'>
                 {spot.profileImg && (
-                    <img alt={spot.description} src={spot.profileImg} className="spot-block-img"/>
+                    <img alt={spot.description} src={spot.profileImg} id='spot-page-main-img'/>
                 )}
                 {!spot.profileImg && (
                     <img alt='default' src={'https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'} className="spot-block-img"/>
                 )}
+                <div id='other-images'>
+                    <div id='img1'></div>
+                    <div id='img2'></div>
+                    <div id='img3'></div>
+                    <div id='img4'></div>
+                </div>
+
             </div>
             <div id='spot-page-location-info'>
-                <p>${spot.pricePerNight} / night</p>
                 <p>Bedrooms: {spot.bedrooms}</p>
+                <p>*</p>
                 <p>Beds: {spot.beds}</p>
+                <p>*</p>
                 <p>Bathrooms: {spot.bathrooms}</p>
-                <p>Amenities: {spot.amenities}</p>
             </div>
+                <p>${spot.pricePerNight} / night</p>
+                <p>Amenities: {spot.amenities}</p>
         </div>
     )
 }

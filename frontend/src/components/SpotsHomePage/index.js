@@ -8,19 +8,24 @@ import './SpotsHomePage.css';
 
 function SpotsHomePage() {
     const dispatch = useDispatch();
+
     const spots = useSelector(state => state.spots);
 
-    useEffect(() => {
-        dispatch(spotActions.getAllSpots())
+    useEffect(async () => {
+        await dispatch(spotActions.getAllSpots())
         if (!spots) {
             return null;
         }
     }, [dispatch])
 
+    const spotsArr = Object.values(spots);
+    console.log(spotsArr)
+
+
     return (
         <main>
             <div className="spots-container">
-                {spots.length && spots.map(spot => {
+                {(typeof spotsArr[0] === 'object' && !Array.isArray(spotsArr[0])) && spotsArr.map(spot => {
                     return (
                         <SpotBlock spot={spot} key={spot.id}/>
                     )

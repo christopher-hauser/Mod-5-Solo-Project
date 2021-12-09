@@ -141,7 +141,11 @@ const spotsReducer = (state = {}, action) => {
             }
             return newState;
         case LOAD_ALL_SPOTS:
-            newState = action.payload;
+            newState = {};
+            action.payload.map((spot) => {
+                const spotId = spot.id;
+                return newState[spotId] = action.payload.find(spot => spot.id === spotId)
+            })
             return newState;
         case GET_SPOT:
             newState = action.payload;

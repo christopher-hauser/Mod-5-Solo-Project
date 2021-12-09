@@ -1,0 +1,80 @@
+#spot-container {
+    margin: 2% 20% 5% 20%;
+}
+
+#spot-title {
+    font-size: 32px;
+    margin: 0px;
+}
+
+#spot-page-main-img {
+    height: auto;
+    width: 50%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#images-container {
+    display: flex;
+    width: 100%;
+}
+
+#other-images {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+    'a b'
+    'c d'
+    ;
+    margin-left: 5px;
+}
+
+#img1 {
+    grid-area: 'a';
+    height: 96%;
+    width: 96%;
+    background-color: lightgreen;
+    margin: 0px 0px 0px 5px;
+    align-self: start;
+    border-radius: 5px;
+}
+
+#img2 {
+    grid-area: 'b';
+    height: 96%;
+    width: 96%;
+    background-color: lightpink;
+    border-radius: 5px;
+    align-self: start;
+    margin: 0px 0px 0px 5px;
+}
+
+#img3 {
+    grid-area: 'c';
+    height: 96%;
+    width: 96%;
+    background-color: lightblue;
+    border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+    align-self: end;
+
+}
+
+#img4 {
+    height: 96%;
+    width: 96%;
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+    margin: 0px 0px 0px 5px;
+    align-self: end;
+}
+
+#spot-page-location-info {
+    display: flex;
+}
+
+#spot-page-location-info p {
+    font-weight: 500;
+    font-size: 24px;
+    margin-right: 20px;
+}
