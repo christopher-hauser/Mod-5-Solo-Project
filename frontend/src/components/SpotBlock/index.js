@@ -31,13 +31,13 @@ function SpotBlock({ spot }) {
                 <p className="spot-block-price">${spot.pricePerNight} / night</p>
             </div>
 
-            <NavLink to={`/spots/${spot.id}/update`}>
-                {spot.hostId === sessionUserId && (
-                <div>
-                    <p>This is your spot! Update?</p>
-                </div>
-                )}
-            </NavLink>
+            <div id='update-container'>
+                <NavLink to={`/spots/${spot.id}/update`}>
+                    {spot.hostId === sessionUserId && (
+                        <p id='update-text'>This is your spot! Update?</p>
+                        )}
+                </NavLink>
+            </div>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 .spot-block {
     display: flex;
     flex-direction: column;
-    height: 30em;
+    height: 100%;
     width: 20em;
     margin: 2em 1em 0em 1em;
 }
@@ -10,8 +10,14 @@
     height: 20em;
     width: 20em;
     object-fit: cover;
-    border-radius: 30px;
-    box-shadow: 3px 2px 2px lightgray;
+    border-radius: 5px;
+    box-shadow: 4px 3px 4px rgb(161, 161, 161);
+    opacity: 80%;
+    transition: .5s;
+}
+
+.spot-block-img:hover {
+    opacity: 100%;
 }
 
 .spot-block-text {
@@ -23,4 +29,33 @@
 
 .spot-block p {
     font-size: larger
+}
+
+.spot-block h2 {
+    font-size: 20px;
+}
+
+#update-container {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+    border-top: 1px solid lightgray;
+
+}
+
+#update-text {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#update-container a {
+    text-decoration: none;
+    color: rgb(235, 74, 100);
+    transition: 0.5s;
+    font-size: 16px;
+}
+
+#update-container a:hover {
+    color: #1B6C8F;
+    text-decoration: underline;
 }
