@@ -42,7 +42,7 @@ function UpdateSpotForm() {
             setAmenities(spot.amenities);
             setProfileImg(spot.profileImg);
         }
-    })
+    }, [spot])
 
     const handleSubmit = async e => {
         e.preventDefault();
