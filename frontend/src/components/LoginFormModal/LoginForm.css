@@ -34,6 +34,7 @@
     font-size: larger;
     width: 100px;
     transition: 0.5s;
+    align-self: center;
 }
 
 #login-popup button:hover {

@@ -20,6 +20,12 @@ function LoginForm() {
     );
   };
 
+  const demoLogin = e => {
+    e.preventDefault();
+
+    return dispatch(sessionActions.login({credential: 'Demo', password: 'password'}))
+  }
+
   return (
     <div id='login-popup'>
       <form onSubmit={handleSubmit} id="login-form">
@@ -52,7 +58,11 @@ function LoginForm() {
         </div>
           <button type="submit">Log In</button>
       </form>
+      <form onSubmit={demoLogin}>
+            <button type='submit'>Demo</button>
+      </form>
     </div>
+
   );
 }
 

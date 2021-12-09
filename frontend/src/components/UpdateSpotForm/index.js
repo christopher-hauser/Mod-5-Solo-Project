@@ -5,30 +5,36 @@ import * as spotActions from "../../store/spots";
 
 import '../NewSpotFormPage/NewSpotFormPage.css';
 
-function UpdateSpotForm() {
+function UpdateSpotForm({}) {
     const dispatch = useDispatch();
 
     useEffect(async () => {
-        await dispatch(spotActions.getOneSpot(id));
-    }, [])
+         await dispatch(spotActions.getOneSpot(id));
+    }, [dispatch])
+
 
     const history = useHistory();
     const id = useParams().id;
     const hostId = useSelector((state) => state.session.user.id)
     const prev = useSelector(state => state.spots);
 
-    const [address, setAddress] = useState(prev.address);
-    const [city, setCity] = useState(prev.city);
-    const [state, setState] = useState(prev.state);
-    const [pricePerNight, setPricePerNight] = useState(prev.pricePerNight);
-    const [bedrooms, setBedrooms] = useState(prev.bedrooms);
-    const [beds, setBeds] = useState(prev.beds);
-    const [bathrooms, setBathrooms] = useState(prev.bathrooms);
-    const [description, setDescription] = useState(prev.description);
-    const [amenities, setAmenities] = useState(prev.amenities);
-    const [profileImg, setProfileImg] = useState(prev.profileImg);
+    const {address: prevAddress, city: prevCity, state: prevState, pricePerNight: prevPrice, bedrooms: prevBedrooms,
+    beds: prevBeds, bathrooms: prevBaths, description: prevDesc, amenities: prevAmen, profileImg: prevProf} = prev;
+
+
+    const [address, setAddress] = useState(prevAddress);
+    const [city, setCity] = useState(prevCity);
+    const [state, setState] = useState(prevState);
+    const [pricePerNight, setPricePerNight] = useState(prevPrice);
+    const [bedrooms, setBedrooms] = useState(prevBedrooms);
+    const [beds, setBeds] = useState(prevBeds);
+    const [bathrooms, setBathrooms] = useState(prevBaths);
+    const [description, setDescription] = useState(prevDesc);
+    const [amenities, setAmenities] = useState(prevAmen);
+    const [profileImg, setProfileImg] = useState(prevProf);
     const [errors, setErrors] = useState([]);
-    console.log(address, city, state)
+
+    console.log(address);
 
     const handleSubmit = async e => {
         e.preventDefault();
