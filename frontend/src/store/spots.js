@@ -120,10 +120,11 @@ export const updateOneSpot = (updatedSpot) => async dispatch => {
 }
 
 export const deleteOneSpot = (id) => async dispatch => {
-    const response = await csrfFetch(`api/spots/${id}`, {
+    const response = await csrfFetch(`/api/spots/${id}`, {
         method: 'DELETE'
     })
-    dispatch(deleteSpot());
+    await dispatch(deleteSpot());
+    console.log(response)
     return response;
 }
 

@@ -73,6 +73,7 @@ router.get(
 
 router.put(
     '/:id',
+    validateNewSpot,
     asyncHandler(async (req, res) => {
         const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = req.body;
         const updatedSpot = await updateSpot(id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
@@ -86,6 +87,7 @@ router.delete(
     '/:id',
     asyncHandler(async (req, res) => {
         const id = req.params.id;
+        console.log('in router', id);
         await deleteSpot(id);
         return res.json({
             message: 'Spot successfully deleted.'

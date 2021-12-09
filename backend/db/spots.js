@@ -48,7 +48,8 @@ async function updateSpot(id, hostId, address, city, state, pricePerNight, bedro
 }
 
 async function deleteSpot(id) {
-    return await Spot.findByPk(id).delete();
+    const spot = await Spot.findByPk(id);
+    return await spot.destroy();
 }
 
 module.exports = {

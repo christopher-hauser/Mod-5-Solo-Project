@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
@@ -7,20 +7,28 @@ import '../NewSpotFormPage/NewSpotFormPage.css';
 
 function UpdateSpotForm() {
     const dispatch = useDispatch();
+
+    useEffect(async () => {
+        await dispatch(spotActions.getOneSpot(id));
+    }, [])
+
     const history = useHistory();
     const id = useParams().id;
     const hostId = useSelector((state) => state.session.user.id)
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [pricePerNight, setPricePerNight] = useState(0);
-    const [bedrooms, setBedrooms] = useState(0);
-    const [beds, setBeds] = useState(0);
-    const [bathrooms, setBathrooms] = useState(0);
-    const [description, setDescription] = useState("");
-    const [amenities, setAmenities] = useState("");
-    const [profileImg, setProfileImg] = useState("");
+    const prev = useSelector(state => state.spots);
+
+    const [address, setAddress] = useState(prev.address);
+    const [city, setCity] = useState(prev.city);
+    const [state, setState] = useState(prev.state);
+    const [pricePerNight, setPricePerNight] = useState(prev.pricePerNight);
+    const [bedrooms, setBedrooms] = useState(prev.bedrooms);
+    const [beds, setBeds] = useState(prev.beds);
+    const [bathrooms, setBathrooms] = useState(prev.bathrooms);
+    const [description, setDescription] = useState(prev.description);
+    const [amenities, setAmenities] = useState(prev.amenities);
+    const [profileImg, setProfileImg] = useState(prev.profileImg);
     const [errors, setErrors] = useState([]);
+    console.log(address, city, state)
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -40,6 +48,7 @@ function UpdateSpotForm() {
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit} id='add-spot-form'>
             <h2>Update your spot's information.</h2>
             <ul id='add-spot-error-list'>
@@ -147,8 +156,23 @@ function UpdateSpotForm() {
                     />
                     </label>
             </div>
-            <button type="submit" id='submit-new-spot'>Update your spot!</button>
+            <div id='buttons'>
+                <button type="submit" id='submit-new-spot'>Update your spot!</button>
+                <button type="button" id='delete-spot'
+                onClick={async (e) => {
+                    e.preventDefault();
+                    const deleted = await dispatch(spotActions.deleteOneSpot(id))
+                        .catch(async res => {
+                            const data = res.json();
+                        })
+                        if (deleted) {
+                            history.push('/');
+                        }
+                }}
+                >Take your spot down.</button>
+            </div>
         </form>
+        </>
     )
 }
 
