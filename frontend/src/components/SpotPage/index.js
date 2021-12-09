@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
+import BookingForm from "../BookingASpot";
 
 import './SpotPage.css'
 
@@ -14,6 +15,7 @@ function Spot() {
     }, [dispatch])
 
     const spot = useSelector(state => state.spots)
+    const userId = useSelector(state => state.session.user.id)
 
     return (
         <div key={spot.id} id="spot-container">
@@ -45,6 +47,18 @@ function Spot() {
             </div>
                 <p>${spot.pricePerNight} / night</p>
                 <p>Amenities: {spot.amenities}</p>
+            <div>
+                {!(spot.hostId === userId) && (
+                    <BookingForm />
+                )}
+
+                {(spot.hostId === userId) && (
+                    <div>
+                        <p>Your spot is online and accepting bookings.</p>
+                    </div>
+                )}
+                {/* NEED WAY TO SHOW YOU ALREADY HAVE A BOOKING FOR A SPOT */}
+            </div>
         </div>
     )
 }

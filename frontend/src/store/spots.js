@@ -124,7 +124,6 @@ export const deleteOneSpot = (id) => async dispatch => {
         method: 'DELETE'
     })
     await dispatch(deleteSpot());
-    console.log(response)
     return response;
 }
 

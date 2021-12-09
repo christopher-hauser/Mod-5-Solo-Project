@@ -87,7 +87,6 @@ router.delete(
     '/:id',
     asyncHandler(async (req, res) => {
         const id = req.params.id;
-        console.log('in router', id);
         await deleteSpot(id);
         return res.json({
             message: 'Spot successfully deleted.'
