@@ -5,7 +5,11 @@ import {NavLink} from 'react-router-dom'
 import './SpotBlock.css'
 
 function SpotBlock({ spot }) {
-    const sessionUserId = useSelector((state) => state.session.user.id);
+        const sessionUserId = useSelector((state) => {
+            if (state.session.user) {
+                return state.session.user.id
+            }
+        });
 
     return (
         <div

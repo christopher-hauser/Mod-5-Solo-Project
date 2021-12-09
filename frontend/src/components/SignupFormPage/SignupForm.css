@@ -1,7 +1,8 @@
 #register-form {
     display: flex;
     flex-direction: column;
-    margin: 5em 30em;
+    min-width: 600px;
+    margin: 5em 20%;
     /* background-color: white; */
     padding-left: 50px;
     padding-right: 50px;
