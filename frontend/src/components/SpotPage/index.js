@@ -31,7 +31,7 @@ function Spot() {
     if (spot) {
 
         return (
-            <div key={spot.id} id="spot-container">
+            <div key={`spot-block-${spot.id}`} id="spot-container">
                 <div>
                     <h2 id='spot-title'>{spot.description}</h2>
                     <h3>{spot.address} {spot.city}, {spot.state}</h3>

@@ -45,7 +45,7 @@ function Navigation({ isLoaded }){
             alt='rairbnb home logo'
             id='home-logo'
             />
-            <p id="rairbnb">Rairbnb</p>
+            <p id="rairbnb">Rarebnb</p>
           </NavLink>
         </li>
       </ul>

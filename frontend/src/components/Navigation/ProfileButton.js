@@ -33,9 +33,9 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu} id='profile-button'>
-        <i className="fas fa-user-circle"/>
+        {/* <i className="fas fa-user-circle"/> */}
+        <img id='profile-button-image' src={'https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg'} />
       </button>
-      {/* <img src={`${user.profileImg}`} /> */}
       {showMenu && (
         <div id="profile-dropdown-menu">
           <ul className="profile-dropdown">

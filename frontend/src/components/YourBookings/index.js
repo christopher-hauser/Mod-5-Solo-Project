@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import * as bookingActions from '../../store/bookings';
-import * as spotActions from '../../store/spots'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -27,7 +26,7 @@ function YourBookings({ spots }) {
     }, [dispatch])
 
     const bookings = Object.values(useSelector(state => state.bookings));
-    
+
     return (
         <div>
             <h2>Your Bookings</h2>

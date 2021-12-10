@@ -25,8 +25,19 @@ nav {
 #nav-right {
     display: flex;
     justify-content: space-between;
-    margin-right: 100px;
-    width: 200px;
+    width: 450px;
+    margin-right: 50px;
+    align-items: center;
+}
+
+#view-your-bookings:hover {
+    color: rgb(243, 43, 76);
+    text-decoration: underline;
+}
+
+#host-your-spot:hover {
+    color: rgb(243, 43, 76);
+    text-decoration: underline;
 }
 
 #home-logo {
@@ -42,11 +53,6 @@ nav {
     font-weight: 700;
     font-size: larger;
     padding-left: 10px;
-}
-
-#host-your-spot {
-    font-weight: 700;
-
 }
 
 #sign-up {
