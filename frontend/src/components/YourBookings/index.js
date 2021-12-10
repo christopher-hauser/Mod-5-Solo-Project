@@ -28,8 +28,15 @@ function YourBookings({ spots }) {
     const bookings = Object.values(useSelector(state => state.bookings));
 
     return (
-        <div>
-            <h2>Your Bookings</h2>
+        <div id='bookings-page'>
+            <div id='your-bookings-title-div'>
+                <h2 id='your-bookings-title'>Bookings</h2>
+            </div>
+            {!Object.values(bookings).length && (
+                <p>You don't have any bookings yet.</p>
+            )}
+            <div id='bookings-container'>
+
             {bookings.map(booking => {
                 const thisSpotId = booking.spotId;
                 const thisSpot = spots.spots[thisSpotId];
@@ -47,15 +54,22 @@ function YourBookings({ spots }) {
                 let endYear = endDateArr[0]
 
                 return (
-                    <div>
+                    <div className='bookings-block'>
                         <h3>{thisSpot.description}</h3>
-                        <img src={thisSpot.profileImg}></img>
-                        <p>{startDay}/{startMonth}/{startYear} to {endDay}/{endMonth}/{endYear}</p>
-                        <p>Number of guests: {booking.numberOfGuests}</p>
-                        <button onClick={cancelBooking} id={`${booking.id}`}>Cancel Booking</button>
+                        <div className='booking-spot-info'>
+                            <div className='booking-spot-image-container'>
+                                <img src={thisSpot.profileImg} className='booking-spot-image'></img>
+                            </div>
+                            <div className='booking-spot-info-div'>
+                                <p className='booking-dates'>{startDay}/{startMonth}/{startYear} to {endDay}/{endMonth}/{endYear}</p>
+                                <p className='booking-guests'>{booking.numberOfGuests} guests</p>
+                                <button className='cancel-booking-button' onClick={cancelBooking} id={`${booking.id}`}>Cancel Booking</button>
+                            </div>
+                        </div>
                     </div>
                 )
             })}
+            </div>
         </div>
     )
 }

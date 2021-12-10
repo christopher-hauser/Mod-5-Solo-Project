@@ -88,7 +88,7 @@ module.exports = {
       beds: 1,
       bathrooms: 1,
       amenities: "Kitchen, Free parking on premises, Wifi, Coffee Maker, Hair dryer, Air conditioning, Indoor fireplace",
-      profileImg: "https://intentpath.com/event/redirect?content%5Binternal_id%5D=83694&content%5Bpath%5D=most-unique-airbnb-in-every-state&content%5Btitle%5D=The%20Most%20Unique%20Airbnb%20in%20Every%20State&content%5Bcategory%5D=Places&content%5Btype%5D=post&content%5Bpage%5D=0&visitor%5Buuid%5D=058a5feaec624d118e9eb8adf58802ac&visit%5Buuid%5D=5ff98126ccbb4e5d8c8f2f82673e1c00&site%5Bid%5D=1&page_view%5Buuid%5D=57096651799548368f59d946bf0faad7&page_view%5Bpage%5D=0&event%5Bexternal_url%5D=https%3A%2F%2Fairbnb.pvxt.net%2Fc%2F1812864%2F567379%2F4273%3FsubId1%3D__EVENT_ID__%26u%3Dhttps%3A%2F%2Fwww.airbnb.com%2Frooms%2F17841617%26sharedid%3Dmost-unique-airbnb-in-every-state&event%5Btype%5D=click&event%5Braw_external_url%5D=https%3A%2F%2Fwww.airbnb.com%2Frooms%2F17841617&event%5Bpartner%5D=Airbnb&event%5Bpartner_channel%5D=Rentals&event%5Bconversion_point%5D=repeater-image",
+      profileImg: "https://a0.muscache.com/im/pictures/miso/Hosting-17841617/original/85d1a5ee-2514-40f2-917d-ec50c1d8db67.jpeg?im_w=1200",
       createdAt: new Date(),
       updatedAt: new Date(),
     },

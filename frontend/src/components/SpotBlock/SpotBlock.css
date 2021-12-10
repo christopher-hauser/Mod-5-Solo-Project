@@ -12,7 +12,7 @@
     object-fit: cover;
     border-radius: 5px;
     box-shadow: 4px 3px 4px rgb(161, 161, 161);
-    opacity: .8;
+    opacity: .85;
     transition: .5s;
 }
 
