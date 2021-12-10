@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import NewSpotFormPage from "./components/NewSpotFormPage";
 import SpotsHomePage from "./components/SpotsHomePage";
@@ -44,6 +44,9 @@ function App() {
           </Route>
           <Route path='/your-bookings'>
             <YourBookings spots={{spots}}/>
+          </Route>
+          <Route>
+            <Redirect path='/'/>
           </Route>
         </Switch>
       )}
