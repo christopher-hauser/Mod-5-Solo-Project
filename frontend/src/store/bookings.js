@@ -72,7 +72,7 @@ const bookingsReducer = (state = {}, action) => {
         case ADD_BOOKING:
             newState = {
                 ...state,
-                [action.payload.booking.id]: action.payload
+                [action.payload.booking.id]: action.payload.booking
             };
             return newState;
         case LOAD_BOOKINGS:

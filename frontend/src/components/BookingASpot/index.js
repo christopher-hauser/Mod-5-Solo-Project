@@ -8,7 +8,11 @@ function BookingForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const spotId = useSelector(state => state.spots.id);
-    const guestId = useSelector(state => state.session.user.id)
+    const guestId = useSelector(state => {
+        if (state.session.user) {
+            return state.session.user.id
+        }
+    })
     const [numberOfGuests, setNumberOfGuests] = useState(0);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');

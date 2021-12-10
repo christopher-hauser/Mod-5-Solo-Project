@@ -1,21 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
 import BookingForm from "../BookingASpot";
+import { Modal } from "../../context/Modal";
+import LoginForm from "../LoginFormModal/LoginForm";
 
 import './SpotPage.css'
 
 function Spot() {
     const dispatch = useDispatch();
     const id = useParams().id;
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         dispatch(spotActions.getOneSpot(id));
     }, [dispatch])
 
     const spot = useSelector(state => state.spots)
-    const userId = useSelector(state => state.session.user.id)
+    const userId = useSelector(state => {
+        if (state.session.user) {
+            return state.session.user.id
+        }
+    })
 
     return (
         <div key={spot.id} id="spot-container">
@@ -48,7 +55,18 @@ function Spot() {
                 <p>${spot.pricePerNight} / night</p>
                 <p>Amenities: {spot.amenities}</p>
             <div>
-                {!(spot.hostId === userId) && (
+                {!userId && (
+                    <>
+                    <button onClick={e => setShowModal(true)}>Log in to book this spot.</button>
+                    {showModal && (
+                        <Modal onClose={() => setShowModal(false)}>
+                          <LoginForm />
+                        </Modal>
+                      )}
+                    </>
+                )}
+
+                {(userId && !(spot.hostId === userId)) && (
                     <BookingForm />
                 )}
 
