@@ -17,7 +17,11 @@ async function getBookings(guestId) {
             guestId
         }
     })
-    return bookings;
+    if (bookings) {
+        return bookings;
+    } else {
+        return null;
+    }
 }
 
 async function deleteBooking(bookingId) {

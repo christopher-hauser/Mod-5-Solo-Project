@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as bookingActions from '../../store/bookings';
 import { useDispatch, useSelector } from "react-redux";
-import './BookingASpot.css';
 import { useHistory } from "react-router-dom";
+import './BookingASpot.css';
 
 function BookingForm() {
     const dispatch = useDispatch();

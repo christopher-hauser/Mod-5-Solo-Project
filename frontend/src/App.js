@@ -8,6 +8,7 @@ import Spot from './components/SpotPage'
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import UpdateSpotForm from "./components/UpdateSpotForm";
+import YourBookings from "./components/YourBookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/spots/:id/update">
             <UpdateSpotForm />
+          </Route>
+          <Route path='/your-bookings'>
+            <YourBookings />
           </Route>
         </Switch>
       )}

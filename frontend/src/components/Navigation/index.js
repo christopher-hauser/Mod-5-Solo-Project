@@ -17,6 +17,9 @@ function Navigation({ isLoaded }){
           <NavLink to="/host-your-spot" className='nav-item' id='host-your-spot'>Host Your Spot</NavLink>
         </div>
         <div>
+          <NavLink to="/your-bookings" className='nav-item' id='view-your-bookings'>Your Bookings</NavLink>
+        </div>
+        <div>
           <ProfileButton user={sessionUser} />
         </div>
       </div>

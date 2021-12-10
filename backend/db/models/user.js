@@ -46,40 +46,40 @@ module.exports = (sequelize, DataTypes) => {
     },
   },
 
-  {
-    defaultScope: {
-      attributes: {
-        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
-      }
-    },
-    scopes: {
-      currentUser: {
-        attributes: { exclude: ['hashedPassword'] }
+    {
+      defaultScope: {
+        attributes: {
+          exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
+        }
       },
-      loginUser: {
-        attributes: {}
+      scopes: {
+        currentUser: {
+          attributes: { exclude: ['hashedPassword'] }
+        },
+        loginUser: {
+          attributes: {}
+        }
       }
-    }
-  });
+    });
 
-  User.associate = function(models) {
-    User.hasMany(models.Spot, {foreignKey: 'hostId'})
-    User.hasMany(models.Booking, {foreignKey: 'userId'})
-    User.hasMany(models.Review, {foreignKey: 'userId'})
-    User.hasMany(models.Image, {foreignKey: 'userId'})
+  User.associate = function (models) {
+    User.hasMany(models.Spot, { foreignKey: 'hostId' })
+    User.hasMany(models.Booking, { foreignKey: 'guestId' })
+    User.hasMany(models.Review, { foreignKey: 'userId' })
+    User.hasMany(models.Image, { foreignKey: 'userId' })
   };
 
-  User.prototype.toSafeObject = function() {
+  User.prototype.toSafeObject = function () {
     const { id, username, email } = this;
     return { id, username, email };
   };
 
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
-   };
+  };
 
   User.getCurrentUserById = async function (id) {
-   return await User.scope('currentUser').findByPk(id);
+    return await User.scope('currentUser').findByPk(id);
   };
 
   User.login = async function ({ credential, password }) {
