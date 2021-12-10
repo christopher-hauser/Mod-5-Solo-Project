@@ -99,3 +99,17 @@
     font-weight: 400;
     font-size: 24px;
 }
+
+#update-spot-title {
+    font-weight: 400;
+    font-size: 40px;
+    color: black;
+}
+
+#update-spot-title-div {
+    display: flex;
+    justify-content: center;
+    width: 200%;
+    background: linear-gradient(270deg, rgb(255, 222, 160), rgba(182, 182, 182, 0) 75.71%),
+    linear-gradient(33deg, #ff8888d2, rgba(0,255,0,0) 70.71%);
+}

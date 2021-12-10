@@ -41,7 +41,7 @@ main {
     grid-area: 'a';
     height: 96%;
     width: 96%;
-    background-color: lightgreen;
+    background-color: #ff8888d2;
     margin: 0px 0px 0px 5px;
     align-self: start;
     border-radius: 5px;
@@ -51,7 +51,7 @@ main {
     grid-area: 'b';
     height: 96%;
     width: 96%;
-    background-color: lightpink;
+    background-color: rgb(255, 222, 160);
     border-radius: 5px;
     align-self: start;
     margin: 0px 0px 0px 5px;
@@ -61,7 +61,7 @@ main {
     grid-area: 'c';
     height: 96%;
     width: 96%;
-    background-color: lightblue;
+    background-color: rgb(255, 222, 160);
     border-radius: 5px;
     margin: 0px 0px 0px 5px;
     align-self: end;
@@ -71,7 +71,7 @@ main {
 #img4 {
     height: 96%;
     width: 96%;
-    background-color: lightgoldenrodyellow;
+    background-color: #ff8888d2;
     border-radius: 5px;
     margin: 0px 0px 0px 5px;
     align-self: end;
@@ -79,38 +79,94 @@ main {
 
 #spot-page-location-info {
     display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 30px;
 }
 
 #spot-page-location-info p {
     font-weight: 500;
-    font-size: 24px;
-    margin-right: 20px;
+    font-size: 20px;
+    margin-right: 40px;
 }
 
-#banner {
+#room-info {
+    display: flex;
+}
+
+#price {
+    margin: 0;
+    font-family:'Source Sans 3', sans-serif;
+}
+
+#book-this-spot-container {
+    width: 50%;
+}
+
+
+#all-info-container {
+    display: flex;
+    border-top: 1px solid rgb(243, 43, 76);
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+#room-info p {
+    font-family:'Source Sans 3', sans-serif;
+    margin-top: 0;
+}
+
+
+#explore-banner {
+    font-weight: 400;
+    font-size: 40px;
+    color: black;
+    align-items: center;
+}
+
+#explore-banner-div {
+    display: flex;
+    justify-content: center;
+    width: 125%;
+    background: linear-gradient(270deg, rgb(255, 222, 160), rgba(182, 182, 182, 0) 75.71%),
+    linear-gradient(33deg, #ff8888d2, rgba(0,255,0,0) 70.71%);
+}
+
+#spot-page-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(217deg, rgb(235, 74, 100), rgba(255, 0, 0, 0) 70.71%),
-            linear-gradient(127deg, rgba(0, 153, 255, 0.8), rgba(0,255,0,0) 70.71%),
-            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+}
+
+#hosts-spot {
+    display: flex;
+    justify-content: center;
+}
+
+#hosts-spot-text {
+    font-size: 24px;
+}
+
+#logged-out-booking {
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'san-serif';
+    font-size: x-large;
+    font-weight: 700;
+    width: 300px;
+    margin-top: 10px;
+    padding: 5px;
+    transition: 1s;
+    align-self: center;
     border-radius: 10px;
+    transition: 0.25s;
+    margin-left: 150px;
+    margin-top: 75px;
+}
+
+#logged-out-booking:hover {
+    cursor: pointer;
+    background-color: rgb(243, 43, 76);
     color: white;
-    width: 125%;
 }
-
-#banner h1 {
-    font-family:'Source Sans 3', sans-serif;
-    font-weight: 500;
-    font-size: 60px;
-    margin: 30px 0px 0px 0px;
-}
-
-#banner h2 {
-    font-family:'Source Sans 3', sans-serif;
-    font-weight: 300;
-    font-size: 36px;
-    margin: 0;
-    padding: 20px 0px 30px 0px;
-}
-

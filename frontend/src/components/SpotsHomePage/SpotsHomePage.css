@@ -10,3 +10,30 @@ main {
     padding-top: 2em;
     /* border: 1px solid rgb(235, 74, 100); */
 }
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(217deg, rgb(235, 74, 100), rgba(255, 0, 0, 0) 70.71%),
+            linear-gradient(127deg, rgba(0, 153, 255, 100), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,100), rgba(0,0,255,0) 70.71%);
+    border-radius: 10px;
+    color: white;
+    width: 125%;
+}
+
+#banner h1 {
+    font-family:'Source Sans 3', sans-serif;
+    font-weight: 500;
+    font-size: 60px;
+    margin: 30px 0px 0px 0px;
+}
+
+#banner h2 {
+    font-family:'Source Sans 3', sans-serif;
+    font-weight: 300;
+    font-size: 36px;
+    margin: 0;
+    padding: 20px 0px 30px 0px;
+}

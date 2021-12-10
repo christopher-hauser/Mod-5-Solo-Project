@@ -1,0 +1,65 @@
+#book-spot-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 30px;
+    background: linear-gradient(270deg, rgb(255, 222, 160), rgba(182, 182, 182, 0) 75.71%),
+    linear-gradient(33deg, #ff8888d2, rgba(0,255,0,0) 70.71%);
+}
+
+#book-spot-info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#submit-new-booking {
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'san-serif';
+    font-weight: 500;
+    font-size: larger;
+    align-items: flex-start;
+    transition: 0.5s;
+    padding: 10px;
+    width: 50%;
+}
+
+#submit-new-booking:hover {
+    background-color: rgb(245, 101, 125);
+    color: white;
+    cursor: pointer;
+}
+
+#book-spot-info-container input {
+    margin-left: 10px;
+}
+
+#end-date {
+    padding-left: 10px;
+}
+
+#date-container {
+    margin-top: 20px;
+}
+
+#book-spot-form h2 {
+    margin-top: 0;
+}
+
+#guest-input {
+    width: 40px;
+}
+
+#date-container input {
+    width: 28%;
+}
+
+#spot-booking-error-list {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 0px;
+    color:rgb(243, 43, 76)
+}

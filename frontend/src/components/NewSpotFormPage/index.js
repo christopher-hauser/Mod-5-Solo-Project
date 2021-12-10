@@ -39,7 +39,9 @@ function NewSpotFormPage() {
 
     return (
         <form onSubmit={handleSubmit} id='add-spot-form'>
-            <h2>Tell us about the spot you'd like to host.</h2>
+            <div id='tell-us-about-title-div'>
+                <h2>Tell us about the spot you'd like to host.</h2>
+            </div>
             <ul id='add-spot-error-list'>
                 {errors.map((error, idx) => <li className='add-spot-error' key={idx}>{error}</li>)}
             </ul>

@@ -15,7 +15,7 @@ function UpdateSpotForm() {
     const history = useHistory();
     const id = useParams().id;
     const hostId = useSelector((state) => state.session.user.id)
-    const spot = useSelector(state => state.spots);
+    const spot = useSelector(state => state.spots.currentSpot);
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -63,7 +63,9 @@ function UpdateSpotForm() {
     return (
         <>
             <form onSubmit={handleSubmit} id='add-spot-form'>
-                <h2>Update your spot's information.</h2>
+                <div id='update-spot-title-div'>
+                    <h2 id='update-spot-title'>Update your spot's information.</h2>
+                </div>
                 <ul id='add-spot-error-list'>
                     {errors.map((error, idx) => <li className='add-spot-error' key={idx}>{error}</li>)}
                 </ul>

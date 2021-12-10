@@ -30,7 +30,7 @@ function YourBookings({ spots }) {
     return (
         <div id='bookings-page'>
             <div id='your-bookings-title-div'>
-                <h2 id='your-bookings-title'>Bookings</h2>
+                <h2 id='your-bookings-title'>Your Bookings</h2>
             </div>
             {!Object.values(bookings).length && (
                 <p>You don't have any bookings yet.</p>
