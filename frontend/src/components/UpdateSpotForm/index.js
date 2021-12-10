@@ -50,7 +50,6 @@ function UpdateSpotForm() {
         const updated = await dispatch(spotActions.updateOneSpot({ id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg }))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log(data);
                 if (data && data.errors) {
                     setErrors(data.errors)
                 }

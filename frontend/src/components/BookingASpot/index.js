@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as bookingActions from '../../store/bookings';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -7,7 +7,7 @@ import './BookingASpot.css';
 function BookingForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const spotId = useSelector(state => state.spots.id);
+    const spotId = useSelector(state => state.spots.currentSpot.id);
     const guestId = useSelector(state => {
         if (state.session.user) {
             return state.session.user.id
@@ -18,10 +18,10 @@ function BookingForm() {
     const [endDate, setEndDate] = useState('');
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setErrors([]);
-        const booked = dispatch(bookingActions.addNewBooking({ spotId, guestId, numberOfGuests, startDate, endDate }))
+        const booked = await dispatch(bookingActions.addNewBooking({ spotId, guestId, numberOfGuests, startDate, endDate }))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) {
@@ -30,7 +30,7 @@ function BookingForm() {
             })
 
         if (booked) {
-            history.push('/');
+            history.push('/your-bookings');
         }
     }
 

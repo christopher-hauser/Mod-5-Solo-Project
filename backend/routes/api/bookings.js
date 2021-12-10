@@ -48,6 +48,7 @@ router.delete(
     '/:id',
     asyncHandler(async (req, res) => {
         const id = req.params.id;
+        console.log(id);
         await deleteBooking(id);
         return res.json({
             message: 'Booking successfully deleted.'

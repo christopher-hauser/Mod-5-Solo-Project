@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import NewSpotFormPage from "./components/NewSpotFormPage";
 import SpotsHomePage from "./components/SpotsHomePage";
 import Spot from './components/SpotPage'
 import * as sessionActions from "./store/session";
+import * as spotActions from './store/spots'
 import Navigation from "./components/Navigation";
 import UpdateSpotForm from "./components/UpdateSpotForm";
 import YourBookings from "./components/YourBookings";
@@ -13,9 +14,13 @@ import YourBookings from "./components/YourBookings";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(spotActions.getAllSpots());
   }, [dispatch]);
+
+  const spots = useSelector(state => state.spots);
 
   return (
     <>
@@ -38,7 +43,7 @@ function App() {
             <UpdateSpotForm />
           </Route>
           <Route path='/your-bookings'>
-            <YourBookings />
+            <YourBookings spots={{spots}}/>
           </Route>
         </Switch>
       )}

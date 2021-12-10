@@ -19,8 +19,6 @@ function SpotsHomePage() {
     }, [dispatch])
 
     const spotsArr = Object.values(spots);
-    console.log(spotsArr)
-
 
     return (
         <main>

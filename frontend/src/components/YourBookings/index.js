@@ -1,29 +1,39 @@
 import React, { useEffect } from 'react';
-import * as bookingActions from '../../store/bookings'
+import * as bookingActions from '../../store/bookings';
+import * as spotActions from '../../store/spots'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import './YourBookings.css';
 
-function YourBookings() {
+function YourBookings({ spots }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const guestId = useSelector(state => state.session.user.id)
-    const spots = useSelector(state => state.spots);
-    console.log('spots', spots);
-    const bookings = Object.values(useSelector(state => state.bookings));
-    console.log('bookings', bookings)
 
-    useEffect(() => {
-        dispatch(bookingActions.getAllBookings(guestId))
+    const cancelBooking = e => {
+        e.preventDefault();
+        const cancelled = dispatch(bookingActions.deleteOneBooking(parseInt(e.target.id)))
+        .catch(async(res) => {
+            return res.json();
+        })
+        if (cancelled) {
+            history.push('/');
+        }
+    }
+
+    useEffect(async () => {
+        await dispatch(bookingActions.getAllBookings(guestId));
     }, [dispatch])
 
+    const bookings = Object.values(useSelector(state => state.bookings));
+    
     return (
         <div>
             <h2>Your Bookings</h2>
             {bookings.map(booking => {
                 const thisSpotId = booking.spotId;
-                const thisSpot = spots[thisSpotId];
+                const thisSpot = spots.spots[thisSpotId];
 
                 let startDateSimple = booking.startDate.split('T').shift();
                 let startDateArr = startDateSimple.split('-');
@@ -43,6 +53,7 @@ function YourBookings() {
                         <img src={thisSpot.profileImg}></img>
                         <p>{startDay}/{startMonth}/{startYear} to {endDay}/{endMonth}/{endYear}</p>
                         <p>Number of guests: {booking.numberOfGuests}</p>
+                        <button onClick={cancelBooking} id={`${booking.id}`}>Cancel Booking</button>
                     </div>
                 )
             })}
