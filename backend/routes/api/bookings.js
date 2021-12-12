@@ -12,7 +12,7 @@ const checkForPast = (value) => {
     let currentDay = parseInt(currentDateArr[2]);
     let currentMonth = currentDateArr[1].toLowerCase();
     let currentYear = parseInt(currentDateArr[3]);
-    let months = ['jan', 'feb', 'mar', 'apr' ,'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
     let currentMonthNo = (months.indexOf(currentMonth) + 1);
 
     let startDateSimple = value.split('T').shift();
@@ -33,7 +33,7 @@ const validateBooking = [
         .exists({ checkFalsy: true })
         .withMessage('Please let your host know how many guests you\'ll be bringing.'),
     check('startDate')
-        .exists({checkFalsy: true})
+        .exists({ checkFalsy: true })
         .withMessage('Please enter the start date for your stay.'),
     check('startDate')
         .custom(value => {
@@ -46,8 +46,28 @@ const validateBooking = [
         })
         .withMessage('All booking dates must be in the future.'),
     check('endDate')
-        .exists({checkFalsy: true})
+        .exists({ checkFalsy: true })
         .withMessage('Please enter the end date for your stay.'),
+    check('startDate', 'endDate')
+        .custom((start, { req }) => {
+            const end = req.body.endDate;
+            let startDateSimple = start.split('T').shift();
+            let startDateArr = startDateSimple.split('-');
+            let startDay = parseInt(startDateArr[2]);
+            let startMonth = parseInt(startDateArr[1]);
+            let startYear = parseInt(startDateArr[0]);
+
+            let endDateSimple = end.split('T').shift();
+            let endDateArr = endDateSimple.split('-');
+            let endDay = parseInt(endDateArr[2]);
+            let endMonth = parseInt(endDateArr[1]);
+            let endYear = parseInt(endDateArr[0]);
+            
+            if (endYear < startYear || endYear === startYear && endMonth < startMonth || endYear === startYear && endMonth === startMonth && endDay < startDay) {
+                return false;
+            } else return true;
+        })
+        .withMessage('Your start date must come before your end date.'),
     handleValidationErrors
 ]
 
