@@ -34,3 +34,8 @@ Rarebnb's front end is built entirely with React.js and JavaScript. This allows 
 - Implement a feature that allows hosts to post multiple images of their spots
 - Implement a reviews feature
 - Add ratings to spot pages, based on reviews
+
+## Technical Implementation
+Rarebnb utilizes React.js/Redux to maintain much of the site's data, which ensures a site that can render dynamically at great speeds. In order to do this, I had to be thoguhtful as to what should be passed down from component to component and what could feasibly live in store throughout a user's session. I found that keeping information on all of the available spots was incredibly helpful, as I could quickly pull that information and render it from store onto the homepage. It would also mean that the home page would dynamically update as users changed information or removed spots. Spot pages, on the other hand, used eager loading to fetch the information for a given spot, as it provided access to the same kind of information while also cutting down the amount of code necessary.
+
+As I look to the future of this site, there are many features I wish to incorporate, such as the Reviews feature and the ability to sort and search through existing spots. All of these additions are to better enhance the flow, readibility, and useability of the site. By following the same framework I've laid out for myself with the existing Spots and Bookings features, I feel confident that these additions can be incorporated smoothly and will enhance the user experience overall.
