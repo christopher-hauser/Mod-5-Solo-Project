@@ -62,7 +62,7 @@ const validateBooking = [
             let endDay = parseInt(endDateArr[2]);
             let endMonth = parseInt(endDateArr[1]);
             let endYear = parseInt(endDateArr[0]);
-            
+
             if (endYear < startYear || endYear === startYear && endMonth < startMonth || endYear === startYear && endMonth === startMonth && endDay < startDay) {
                 return false;
             } else return true;
@@ -101,7 +101,6 @@ router.delete(
     '/:id',
     asyncHandler(async (req, res) => {
         const id = req.params.id;
-        console.log(id);
         await deleteBooking(id);
         return res.json({
             message: 'Booking successfully deleted.'
