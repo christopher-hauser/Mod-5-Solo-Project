@@ -48,7 +48,6 @@ router.post(
     validateNewSpot,
     asyncHandler(async (req, res) => {
         const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities } = req.body;
-        console.log(req.file);
         const profileImg = await singlePublicFileUpload(req.file);
         const spot = await addNewSpot(hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
 
@@ -77,9 +76,11 @@ router.get(
 
 router.put(
     '/:id',
+    singleMulterUpload("profileImg"),
     validateNewSpot,
     asyncHandler(async (req, res) => {
-        const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = req.body;
+        const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities } = req.body;
+        const profileImg = await singlePublicFileUpload(req.file);
         const updatedSpot = await updateSpot(id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
         return res.json({
             updatedSpot

@@ -93,27 +93,25 @@ export const getOneSpot = (id) => async dispatch => {
 }
 
 export const updateOneSpot = (updatedSpot) => async dispatch => {
-    const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = updatedSpot;
-    console.log(id);
+    const { id, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = updatedSpot;
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("pricePerNight", pricePerNight);
+    formData.append("bedrooms", bedrooms);
+    formData.append("beds", beds);
+    formData.append("bathrooms", bathrooms);
+    formData.append("description", description);
+    formData.append("amenities", amenities);
+    if (profileImg) formData.append("profileImg", profileImg);
     const response = await csrfFetch(`/api/spots/${id}`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         },
-        body: JSON.stringify({
-            id,
-            hostId,
-            address,
-            city,
-            state,
-            pricePerNight,
-            bedrooms,
-            beds,
-            bathrooms,
-            description,
-            amenities,
-            profileImg
-        })
+        body: formData
     });
     const spot = await response.json();
     dispatch(updateSpot(spot));
