@@ -46,24 +46,25 @@ const deleteSpot = () => {
 
 export const addNewSpot = newSpot => async dispatch => {
     const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = newSpot;
+    const formData = new FormData();
+    formData.append("hostId", hostId);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("pricePerNight", pricePerNight);
+    formData.append("bedrooms", bedrooms);
+    formData.append("beds", beds);
+    formData.append("bathrooms", bathrooms);
+    formData.append("description", description);
+    formData.append("amenities", amenities);
+    if (profileImg) formData.append("profileImg", profileImg);
+
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         },
-        body: JSON.stringify({
-            hostId,
-            address,
-            city,
-            state,
-            pricePerNight,
-            bedrooms,
-            beds,
-            bathrooms,
-            description,
-            amenities,
-            profileImg
-        })
+        body: formData
     });
     const spot = await response.json();
     dispatch(addSpot(spot));

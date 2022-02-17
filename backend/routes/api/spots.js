@@ -5,6 +5,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { addNewSpot, getAllSpots, getOneSpot, updateSpot, deleteSpot } = require('../../db/spots')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
 const validateNewSpot = [
@@ -42,10 +43,13 @@ const router = express.Router();
 
 router.post(
     '/',
+    singleMulterUpload("profileImg"),
     requireAuth,
     validateNewSpot,
     asyncHandler(async (req, res) => {
-        const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg } = req.body;
+        const { hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities } = req.body;
+        console.log(req.file);
+        const profileImg = await singlePublicFileUpload(req.file);
         const spot = await addNewSpot(hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
 
         return res.json({
