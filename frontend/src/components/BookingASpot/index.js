@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import * as bookingActions from '../../store/bookings';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import { addDays } from 'date-fns';
+import "react-datepicker/dist/react-datepicker.css";
 import './BookingASpot.css';
+
 
 function BookingForm() {
     const dispatch = useDispatch();
@@ -14,9 +18,15 @@ function BookingForm() {
         }
     })
     const [numberOfGuests, setNumberOfGuests] = useState(0);
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(null);
     const [errors, setErrors] = useState([]);
+
+    const onChange = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+      };
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -50,22 +60,15 @@ function BookingForm() {
                         />
                     </label>
                     <div id='date-container'>
-                        <label>
-                            Start Date:
-                            <input
-                                type="date"
-                                value={startDate}
-                                onChange={e => setStartDate(e.target.value)}
-                            />
-                        </label>
-                        <label id='end-date'>
-                            End Date:
-                            <input
-                                type="date"
-                                value={endDate}
-                                onChange={e => setEndDate(e.target.value)}
-                            />
-                        </label>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={onChange}
+                            startDate={startDate}
+                            endDate={endDate}
+                            excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+                            selectsRange
+                            inline
+                        />
                     </div>
                 </div>
                 <ul id='spot-booking-error-list'>
