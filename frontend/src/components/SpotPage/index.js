@@ -7,6 +7,7 @@ import BookingForm from "../BookingASpot";
 import { Modal } from "../../context/Modal";
 import LoginForm from "../LoginFormModal/LoginForm";
 import NewSpotImage from "../NewSpotImage";
+import Carousel, { CarouselItem } from '../Carousel'
 
 import './SpotPage.css'
 
@@ -40,37 +41,50 @@ function Spot() {
         }
     })
 
-    console.log(images[1])
+    const imageURLs = [];
+
+    for (let key in images) {
+        imageURLs.push(images[key].image)
+    }
 
     if (spot) {
         return (
             <>
+                <div id='explore-banner-div'>
+                    <h2 id='explore-banner'>Explore</h2>
+                </div>
                 <div id='spot-page-container'>
-                    <div id='explore-banner-div'>
-                        <h2 id='explore-banner'>Explore</h2>
-                    </div>
                     <div key={`spot-block-${spot.id}`} id="spot-container">
                         <div>
                             <h2 id='spot-title'>{spot.description}</h2>
                             <h3>{spot.address} {spot.city}, {spot.state}</h3>
                         </div>
                         <div id='images-container'>
-                            {spot.profileImg && (
-                                <img alt={spot.description} src={spot.profileImg} id='spot-page-main-img' />
-                            )}
                             {!spot.profileImg && (
                                 <img alt='default' src={'https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'} className="spot-block-img" />
                             )}
                             <div id='other-images'>
                                 {images && (
+                                    <Carousel>
+                                        <CarouselItem image={spot.profileImg}></CarouselItem>
+                                        {imageURLs.map(image => {
+                                            return (
+                                                <CarouselItem image={image}></CarouselItem>
+                                            )
+                                        })}
+                                    </Carousel>
+                                )}
+
+                                {/* {images && (
                                     <img id='img1' src={images[1].image}></img>
                                 )}
                                 <div id='img2'></div>
                                 <div id='img3'></div>
-                                <div id='img4'></div>
+                                <div id='img4'></div> */}
                             </div>
                             {spot.hostId === userId && (
-                                <div>
+                                <div className='new-image-form'>
+                                    <p>Add a new image</p>
                                     <NewSpotImage />
                                 </div>
                             )}

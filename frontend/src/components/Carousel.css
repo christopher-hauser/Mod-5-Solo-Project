@@ -1,0 +1,55 @@
+.carousel {
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+    background-color: none;
+}
+
+.inner {
+    white-space: nowrap;
+    width: 100%;
+    transition: transform 0.3s;
+    z-index: 1;
+}
+
+.carousel-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.carousel-item img {
+    height: 25em;
+    width: 35em;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.indicators {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+.indicators > button {
+    border: none;
+    color: black;
+    font-size: 40px;
+    margin: 5px;
+    background: none;
+}
+
+#click-left {
+    position:relative;
+    z-index: 3;
+    left: -42%;
+}
+
+#click-right {
+    position:relative;
+    z-index: 3;
+    right: -42%;
+}

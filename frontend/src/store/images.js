@@ -54,6 +54,7 @@ export const getAllSpotImages = (spotId) => async dispatch => {
 
     if (response.ok) {
         const images = await response.json();
+        console.log(images);
         dispatch(loadAllImages(images));
     }
     return response;
