@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as bookingActions from '../../store/bookings';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -22,6 +22,44 @@ function BookingForm() {
     const [endDate, setEndDate] = useState(null);
     const [errors, setErrors] = useState([]);
 
+    const getBookedDates = async () => {
+        console.log('useEffect')
+        const res = await fetch(`/api/bookings/${spotId}`);
+        const bookings = await res.json();
+        console.log(bookings);
+        const bookingDates = [];
+
+        function addDays(date, days) {
+            let result = new Date(date);
+            console.log('before', result)
+            result.setDate(result.getDate() + days);
+            console.log('after', result)
+            return result;
+          }
+
+        function getDates(startDate, stopDate) {
+            console.log(startDate, stopDate)
+            let dateArray = []
+            let currentDate = startDate;
+            while (currentDate <= stopDate) {
+                dateArray.push(new Date(currentDate));
+                console.log(currentDate)
+                currentDate = addDays(currentDate, 1)
+            }
+            return dateArray;
+        }
+
+        bookings?.map(booking => {
+            let start = booking.startDate;
+            let end = booking.endDate;
+            console.log(start, end)
+            let dates = getDates(start, end);
+            console.log(dates);
+
+        })
+        return bookings;
+    }
+
     const onChange = (dates) => {
         const [start, end] = dates;
         setStartDate(start);
@@ -43,6 +81,10 @@ function BookingForm() {
             history.push('/your-bookings');
         }
     }
+
+    useEffect(async () => {
+        await getBookedDates();
+    }, [])
 
     return (
         <>

@@ -24,6 +24,17 @@ async function getBookings(guestId) {
     }
 }
 
+async function getAllBookingDates(spotId) {
+    const bookings = await Booking.findAll({
+        where: {
+            spotId
+        }
+    });
+
+    if (bookings) return bookings;
+    else return null;
+}
+
 async function deleteBooking(bookingId) {
     const booking = await Booking.findByPk(bookingId);
     return await booking.destroy();
@@ -32,5 +43,6 @@ async function deleteBooking(bookingId) {
 module.exports = {
     addNewBooking,
     getBookings,
+    getAllBookingDates,
     deleteBooking
 }
