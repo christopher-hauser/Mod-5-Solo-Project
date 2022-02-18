@@ -41,10 +41,27 @@ function Spot() {
         }
     })
 
-    const imageURLs = [];
+    const imageObjects = [];
 
     for (let key in images) {
-        imageURLs.push(images[key].image)
+        imageObjects.push(images[key]);
+    }
+
+    if (imageObjects.length < 2) {
+        let leftArrow = document.getElementById('click-left');
+        let rightArrow = document.getElementById('click-right');
+
+        setTimeout(() => {
+            leftArrow?.remove();
+            rightArrow?.remove();
+        }, 0)
+    }
+
+    const spotProfileImage = {
+        'userId': spot?.hostId,
+        'spotId': spot?.id,
+        "image": spot?.profileImg,
+        "profileImg": true
     }
 
     if (spot) {
@@ -66,8 +83,8 @@ function Spot() {
                             <div id='other-images'>
                                 {images && (
                                     <Carousel>
-                                        <CarouselItem image={spot.profileImg}></CarouselItem>
-                                        {imageURLs.map(image => {
+                                        <CarouselItem image={spotProfileImage}></CarouselItem>
+                                        {imageObjects.map(image => {
                                             return (
                                                 <CarouselItem image={image}></CarouselItem>
                                             )

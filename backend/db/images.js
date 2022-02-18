@@ -22,7 +22,7 @@ async function getAllSpotPhotos(spotId) {
 
 
 async function deletePhoto(id) {
-    const photo = await Photo.findByPk(id);
+    const photo = await Image.findByPk(id);
     return await photo.destroy();
 }
 

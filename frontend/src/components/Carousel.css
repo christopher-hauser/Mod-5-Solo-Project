@@ -14,6 +14,7 @@
 
 .carousel-item {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -36,10 +37,16 @@
 
 .indicators > button {
     border: none;
-    color: black;
+    color: rgb(107, 107, 107);
     font-size: 40px;
     margin: 5px;
     background: none;
+    transition: 0.5s;
+}
+
+.indicators > button:hover {
+    cursor: pointer;
+    color: black
 }
 
 #click-left {
