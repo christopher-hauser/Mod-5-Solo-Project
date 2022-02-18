@@ -17,9 +17,9 @@ function NewSpotImage() {
         e.preventDefault();
         console.log(userId, spotId, image);
         const added = await dispatch(imageActions.addNewImage({userId, spotId, image}))
-        // if (added) {
-        //     history.push('')
-        // }
+        if (added) {
+            history.push(`/spots/${spotId}`)
+        }
     }
 
     const updateFile = e => {

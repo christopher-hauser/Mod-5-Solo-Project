@@ -46,8 +46,8 @@ const Carousel = ({ children }) => {
         if (newIndex < 0) {
             newIndex = 0;
         }
-        else if (newIndex >= React.Children.count(children)) {
-            newIndex = React.Children.count(children) - 1;
+        else if (newIndex === React.Children.count(children) - 1) {
+            newIndex = React.Children.count(children) - 2;
         }
 
         setActiveIndex(newIndex);

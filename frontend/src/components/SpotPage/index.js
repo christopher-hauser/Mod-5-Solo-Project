@@ -91,13 +91,6 @@ function Spot() {
                                         })}
                                     </Carousel>
                                 )}
-
-                                {/* {images && (
-                                    <img id='img1' src={images[1].image}></img>
-                                )}
-                                <div id='img2'></div>
-                                <div id='img3'></div>
-                                <div id='img4'></div> */}
                             </div>
                             {spot.hostId === userId && (
                                 <div className='new-image-form'>
