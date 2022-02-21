@@ -41,6 +41,9 @@ function Spot() {
         }
     })
 
+    const spotAmenitiesArray = spot?.amenities.split(', ')
+    console.log(spotAmenitiesArray)
+
     const imageObjects = [];
 
     for (let key in images) {
@@ -94,7 +97,7 @@ function Spot() {
                             </div>
                             {spot.hostId === userId && (
                                 <div className='new-image-form'>
-                                    <p>Add a new image</p>
+                                    <p id='want-to-upload'>Want to upload a new image?</p>
                                     <NewSpotImage />
                                 </div>
                             )}
@@ -102,15 +105,34 @@ function Spot() {
                         </div>
                         <div id='all-info-container'>
                             <div id='spot-page-location-info'>
-                                <div id='room-info'>
-                                    <p>Bedrooms: {spot.bedrooms}</p>
-                                    <p>•</p>
-                                    <p>Beds: {spot.beds}</p>
-                                    <p>•</p>
-                                    <p>Bathrooms: {spot.bathrooms}</p>
+                                <div id='price-and-description' >
+                                    <div id='price-container'>
+                                        <p id='price'>${spot.pricePerNight} </p>
+                                        <p id='per-night'>/ night</p>
+                                    </div>
+                                    <div>
+                                        <div id='room-info'>
+                                            <p>Bedrooms: {spot.bedrooms}</p>
+                                            <p>•</p>
+                                            <p>Beds: {spot.beds}</p>
+                                            <p>•</p>
+                                            <p>Bathrooms: {spot.bathrooms}</p>
+                                        </div>
+                                        <div id='desc-container'>
+                                            <p id='spot-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p id='price'>${spot.pricePerNight} / night</p>
-                                <p>Amenities: {spot.amenities}</p>
+                                <div id='amenities-container'>
+                                    <p id='amenities-title'>Amenities:</p>
+                                    <ul id='amenity-list'>
+                                        {spotAmenitiesArray && (
+                                            spotAmenitiesArray.map(amenity => {
+                                                return (<li>{amenity}</li>)
+                                            })
+                                        )}
+                                    </ul>
+                                </div>
                             </div>
                             <div id='book-this-spot-container'>
                                 {!userId && (

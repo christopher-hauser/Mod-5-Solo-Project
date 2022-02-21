@@ -14,7 +14,7 @@ export const CarouselItem = ({ children, width, image }) => {
         <div className='carousel-item' style={{ width: width }}>
             <img src={image.image}></img>
             {user?.id === image.userId && !image.profileImg && (
-                <button type="button" id='delete-image'
+                <button type="button" className='delete-image'
                     onClick={async (e) => {
                         e.preventDefault();
                         const deleted = await dispatch(deleteOneImage(image))

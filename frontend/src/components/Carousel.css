@@ -60,3 +60,44 @@
     z-index: 3;
     right: -42%;
 }
+
+.delete-image {
+    margin-top: 10px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'sans-serif';
+    font-weight: 500;
+    transition: 0.5s;
+    align-self: center;
+}
+
+.delete-image:hover {
+    background-color: rgb(243, 43, 76);
+    color: white;
+    cursor: pointer;
+}
+
+.carousel-item a {
+    color: black;
+    text-decoration: none;
+    margin-top: 10px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'sans-serif';
+    font-weight: 500;
+    transition: 0.5s;
+    align-self: center;
+    padding: 0 4px;
+}
+
+.carousel-item a:hover {
+    background-color: rgb(243, 43, 76);
+    color: white;
+    cursor: pointer;
+}

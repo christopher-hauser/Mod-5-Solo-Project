@@ -1,0 +1,89 @@
+.new-image-form {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0px;
+    width: 100%;
+}
+
+.add-image-input {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid rgb(243, 150, 43);
+    background-color: rgb(243, 150, 43);
+    color: white;
+    padding: 5px 10px;
+}
+
+#flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+#add-image-input label {
+    color: black;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'sans-serif';
+    font-weight: 500;
+    transition: 0.5s;
+    align-self: center;
+    padding: 0 4px;
+}
+
+#file-name {
+    font-weight: 600;
+}
+
+#want-to-upload {
+    font-size: 18px;
+}
+
+#file-upload-button {
+    color: black;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'sans-serif';
+    font-weight: 500;
+    transition: 0.5s;
+    align-self: center;
+    padding: 0 4px;
+}
+
+
+#upload-image-submit {
+    color: black;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+    border: 1px solid rgb(243, 43, 76);
+    border-radius: 5px;
+    color: rgb(243, 43, 76);
+    font-family: 'Quicksand', 'sans-serif';
+    font-weight: 500;
+    transition: 0.5s;
+    align-self: center;
+    padding: 3px 4px;
+}
+
+#upload-image-submit:hover {
+    cursor: pointer;
+    background-color: rgb(243, 43, 76);
+    color: white;
+}
