@@ -21,43 +21,67 @@ function BookingForm() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
     const [errors, setErrors] = useState([]);
+    const [bookedDates, setBookedDates] = useState([]);
+
+    //helper functions
+    function addDays(date, days) {
+        let result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+      }
+
+    function getDates(startDate, stopDate) {
+        startDate = new Date(startDate);
+        stopDate = new Date(stopDate);
+        stopDate.setDate(stopDate.getDate() + 1)
+        let dateArray = []
+        let currentDate = startDate;
+        while (currentDate <= stopDate) {
+            dateArray.push(new Date(currentDate));
+            currentDate = addDays(currentDate, 1)
+        }
+        return dateArray;
+    }
 
     const getBookedDates = async () => {
-        console.log('useEffect')
         const res = await fetch(`/api/bookings/${spotId}`);
         const bookings = await res.json();
-        console.log(bookings);
-        const bookingDates = [];
+        let bookingDates = [];
 
-        function addDays(date, days) {
-            let result = new Date(date);
-            console.log('before', result)
-            result.setDate(result.getDate() + days);
-            console.log('after', result)
-            return result;
-          }
-
-        function getDates(startDate, stopDate) {
-            console.log(startDate, stopDate)
-            let dateArray = []
-            let currentDate = startDate;
-            while (currentDate <= stopDate) {
-                dateArray.push(new Date(currentDate));
-                console.log(currentDate)
-                currentDate = addDays(currentDate, 1)
-            }
-            return dateArray;
-        }
 
         bookings?.map(booking => {
             let start = booking.startDate;
             let end = booking.endDate;
-            console.log(start, end)
-            let dates = getDates(start, end);
-            console.log(dates);
-
+            let dateArray = getDates(start, end);
+            bookingDates = [...bookingDates, ...dateArray]
         })
-        return bookings;
+        return bookingDates;
+    }
+
+    const checkIfBooked = (startDate, endDate, bookings) => {
+        // grab range from startDate/endDate
+        let potentialDates = getDates(startDate, endDate);
+        let bookingsSimple = [];
+        // set bookings to month/day/year
+        for (let i = 0; i < bookings.length; i++) {
+            let day = bookings[i].getDate();
+            let month = bookings[i].getMonth();
+            let year = bookings[i].getYear();
+            bookingsSimple.push("string"+day+month+year);
+        }
+
+        // see if a potential date exists in bookings already;
+        for (let i = 0; i < potentialDates.length; i++) {
+            let day = potentialDates[i].getDate();
+            let month = potentialDates[i].getMonth();
+            let year = potentialDates[i].getYear();
+            let potentialDateSimple = "string"+day+month+year;
+            if (bookingsSimple.includes(potentialDateSimple)) {
+                setErrors(['Please select a range of dates that have not already been booked.']);
+                return true;
+            }
+        }
+        return false;
     }
 
     const onChange = (dates) => {
@@ -69,6 +93,8 @@ function BookingForm() {
     const handleSubmit = async e => {
         e.preventDefault();
         setErrors([]);
+        const alreadyBooked = checkIfBooked(startDate, endDate, bookedDates);
+        if (alreadyBooked) return;
         const booked = await dispatch(bookingActions.addNewBooking({ spotId, guestId, numberOfGuests, startDate, endDate }))
             .catch(async (res) => {
                 const data = await res.json();
@@ -83,8 +109,10 @@ function BookingForm() {
     }
 
     useEffect(async () => {
-        await getBookedDates();
+        const booked = await getBookedDates();
+        setBookedDates(booked);
     }, [])
+
 
     return (
         <>
@@ -107,7 +135,7 @@ function BookingForm() {
                             onChange={onChange}
                             startDate={startDate}
                             endDate={endDate}
-                            excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+                            excludeDates={bookedDates}
                             selectsRange
                             inline
                         />
