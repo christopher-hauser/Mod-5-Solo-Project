@@ -8,6 +8,7 @@ main {
 
 #spot-container {
     margin: 2% 20% 5% 20%;
+    width: 100%;
 }
 
 #spot-title {
@@ -17,24 +18,27 @@ main {
 
 #spot-page-main-img {
     height: auto;
-    width: 50%;
+    width: 0%;
     object-fit: cover;
     border-radius: 5px;
 }
 
 #images-container {
+    box-sizing: border-box;
+    flex-direction: column;
+    overflow: hidden;
     display: flex;
     width: 100%;
 }
 
 #other-images {
     width: 100%;
-    display: grid;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: inline-block;
     grid-template-areas:
     'a b'
-    'c d'
-    ;
-    margin-left: 5px;
+    'c d';
 }
 
 #img1 {
@@ -79,28 +83,63 @@ main {
 
 #spot-page-location-info {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     width: 50%;
-    margin-top: 30px;
 }
 
-#spot-page-location-info p {
+#room-info p {
     font-weight: 500;
     font-size: 20px;
-    margin-right: 40px;
 }
 
 #room-info {
     display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff3a3ad2;
+    background-color: #ff8888d2;
+    padding: 30px 30px;
 }
 
 #price {
     margin: 0;
     font-family:'Source Sans 3', sans-serif;
+    font-size: 40px;
+}
+
+#per-night {
+    margin: 0;
+    font-family:'Source Sans 3', sans-serif;
+    font-size: 18px;
+}
+
+#price-and-description {
+    display: flex;
+}
+
+#desc-container {
+    padding: 0px 15px;
+}
+
+#spot-desc {
+    text-align: justify;
+    margin-top: 0;
 }
 
 #book-this-spot-container {
+    box-sizing: border-box;
+    margin: 0 20px;
     width: 50%;
+    border-radius: 10px;
+    background: linear-gradient(270deg, rgb(255, 222, 160), rgba(182, 182, 182, 0) 75.71%), linear-gradient(33deg, #ff8888d2, rgba(0,255,0,0) 70.71%);
 }
 
 
@@ -109,6 +148,33 @@ main {
     border-top: 1px solid rgb(243, 43, 76);
     margin-top: 40px;
     padding-top: 20px;
+}
+
+#amenities-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+#amenity-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    list-style-type:circle;
+    padding: 0;
+    margin: 0 0 0 20px;
+}
+
+#amenities-title {
+    font-size: 30px;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid black;
+}
+
+#room-info {
+    align-self: center;
 }
 
 #room-info p {
@@ -127,7 +193,9 @@ main {
 #explore-banner-div {
     display: flex;
     justify-content: center;
-    width: 125%;
+    position: relative;
+    left: -2.5%;
+    width: 105%;
     background: linear-gradient(270deg, rgb(255, 222, 160), rgba(182, 182, 182, 0) 75.71%),
     linear-gradient(33deg, #ff8888d2, rgba(0,255,0,0) 70.71%);
 }
@@ -136,15 +204,20 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0% 15%;
+
 }
 
 #hosts-spot {
     display: flex;
     justify-content: center;
+    height: 100%;
 }
 
 #hosts-spot-text {
     font-size: 24px;
+    justify-self: center;
+    align-self: center;
 }
 
 #logged-out-booking {
@@ -169,4 +242,15 @@ main {
     cursor: pointer;
     background-color: rgb(243, 43, 76);
     color: white;
+}
+
+.new-image-form {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#add-image-form {
+    display: flex;
 }

@@ -3,12 +3,11 @@ const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { addNewBooking, getBookings, deleteBooking } = require('../../db/bookings')
+const { addNewBooking, getBookings, getAllBookingDates, deleteBooking } = require('../../db/bookings')
 
 const checkForPast = (value) => {
     const currentDate = new Date();
-    let currentDateSimple = currentDate.toString().split('T').shift();
-    let currentDateArr = currentDateSimple.split('-')[0].split(' ');
+    let currentDateArr = currentDate.toString().split(' ')
     let currentDay = parseInt(currentDateArr[2]);
     let currentMonth = currentDateArr[1].toLowerCase();
     let currentYear = parseInt(currentDateArr[3]);
@@ -84,6 +83,16 @@ router.post(
         return res.json({
             booking
         })
+    })
+)
+
+router.get(
+    '/:id',
+    asyncHandler(async (req, res) => {
+        const spotId = req.params.id
+        const bookings = await getAllBookingDates(spotId);
+        console.log(spotId);
+        return res.json(bookings);
     })
 )
 

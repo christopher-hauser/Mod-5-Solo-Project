@@ -18,6 +18,10 @@ module.exports = {
         allowNull: false,
         references: {model: 'Spots'}
       },
+      image: {
+        type: Sequelize.STRING(1000),
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

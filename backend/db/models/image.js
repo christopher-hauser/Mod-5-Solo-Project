@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    image: {
+      type: DataTypes.STRING(1000),
+      allowNull: false
+    },
   }, {});
   Image.associate = function(models) {
     Image.belongsTo(models.User, {foreignKey: 'userId'})

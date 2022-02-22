@@ -18,7 +18,7 @@ function NewSpotFormPage() {
     const [bathrooms, setBathrooms] = useState(0);
     const [description, setDescription] = useState("");
     const [amenities, setAmenities] = useState("");
-    const [profileImg, setProfileImg] = useState("");
+    const [profileImg, setProfileImg] = useState(null);
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async e => {
@@ -35,6 +35,11 @@ function NewSpotFormPage() {
         if (added) {
             history.push('/');
         }
+    }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setProfileImg(file);
     }
 
     return (
@@ -140,10 +145,9 @@ function NewSpotFormPage() {
                     <label>
                     Show us your place!
                     <input
-                    type ="text"
-                    value={profileImg}
-                    placeholder='Image URL'
-                    onChange={(e) => setProfileImg(e.target.value)}
+                    type ="file"
+                    placeholder='Image'
+                    onChange={updateFile}
                     />
                     </label>
             </div>

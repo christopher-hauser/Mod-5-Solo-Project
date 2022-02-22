@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/christopher-hauser/Mod-5-Solo-Project/issues"
   },
-  "homepage": "https://github.com/christopher-hauser/Mod-5-Solo-Project#readme"
+  "homepage": "https://github.com/christopher-hauser/Mod-5-Solo-Project#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1076.0"
+  }
 }
