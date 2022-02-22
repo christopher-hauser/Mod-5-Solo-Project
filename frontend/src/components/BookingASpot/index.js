@@ -12,6 +12,7 @@ function BookingForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const spotId = useSelector(state => state.spots.currentSpot.id);
+    const spot = useSelector(state => state.spots.currentSpot)
     const guestId = useSelector(state => {
         if (state.session.user) {
             return state.session.user.id
@@ -22,8 +23,15 @@ function BookingForm() {
     const [endDate, setEndDate] = useState(null);
     const [errors, setErrors] = useState([]);
     const [bookedDates, setBookedDates] = useState([]);
+    const [currentPrice, setCurrentPrice] = useState(spot.pricePerNight);
 
     //helper functions
+    function countDays(start, end) {
+        start = new Date(start);
+        end = new Date(end);
+        return Math.round((end - start) / 86400000);
+    }
+
     function addDays(date, days) {
         let result = new Date(date);
         result.setDate(result.getDate() + days);
@@ -88,6 +96,9 @@ function BookingForm() {
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
+        if (start && end) {
+            setCurrentPrice(countDays(start, end) * spot.pricePerNight)
+        }
       };
 
     const handleSubmit = async e => {
@@ -112,8 +123,6 @@ function BookingForm() {
         const booked = await getBookedDates();
         setBookedDates(booked);
     }, [])
-
-    console.log(startDate, endDate)
 
     return (
         <>
@@ -140,6 +149,9 @@ function BookingForm() {
                             selectsRange
                             inline
                         />
+                    </div>
+                    <div id='total-price-container'>
+                        <p id='total-price'><strong>Total:</strong> ${currentPrice}.00</p>
                     </div>
                 </div>
                 <ul id='spot-booking-error-list'>
