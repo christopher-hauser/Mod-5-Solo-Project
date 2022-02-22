@@ -7,8 +7,7 @@ const { addNewBooking, getBookings, getAllBookingDates, deleteBooking } = requir
 
 const checkForPast = (value) => {
     const currentDate = new Date();
-    let currentDateSimple = currentDate.toString().split('T').shift();
-    let currentDateArr = currentDateSimple.split('-')[0].split(' ');
+    let currentDateArr = currentDate.toString().split(' ')
     let currentDay = parseInt(currentDateArr[2]);
     let currentMonth = currentDateArr[1].toLowerCase();
     let currentYear = parseInt(currentDateArr[3]);

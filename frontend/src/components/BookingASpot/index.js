@@ -113,6 +113,7 @@ function BookingForm() {
         setBookedDates(booked);
     }, [])
 
+    console.log(startDate, endDate)
 
     return (
         <>
