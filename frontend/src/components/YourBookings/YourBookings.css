@@ -113,3 +113,8 @@
     background: linear-gradient(270deg, rgb(255, 222, 160), rgba(182, 182, 182, 0) 75.71%),
     linear-gradient(33deg, #ff8888d2, rgba(0,255,0,0) 70.71%);
 }
+
+.booking-total-cost {
+    margin-top: 0;
+    font-size: 20px;
+}

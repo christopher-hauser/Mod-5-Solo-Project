@@ -10,6 +10,12 @@ function YourBookings({ spots }) {
     const history = useHistory();
     const guestId = useSelector(state => state.session.user.id)
 
+    function countDays(start, end) {
+        start = new Date(start);
+        end = new Date(end);
+        return Math.round((end - start) / 86400000);
+    }
+
     const cancelBooking = e => {
         e.preventDefault();
         const cancelled = dispatch(bookingActions.deleteOneBooking(parseInt(e.target.id)))
@@ -63,6 +69,7 @@ function YourBookings({ spots }) {
                             <div className='booking-spot-info-div'>
                                 <p className='booking-dates'>{startDay}/{startMonth}/{startYear} to {endDay}/{endMonth}/{endYear}</p>
                                 <p className='booking-guests'>{booking.numberOfGuests} guests</p>
+                                <p className='booking-total-cost'>${thisSpot.pricePerNight * countDays(booking.startDate, booking.endDate)}</p>
                                 <button className='cancel-booking-button' onClick={cancelBooking} id={`${booking.id}`}>Cancel Booking</button>
                             </div>
                         </div>
