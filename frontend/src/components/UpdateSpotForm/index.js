@@ -166,7 +166,7 @@ function UpdateSpotForm() {
                             onChange={(e) => setAmenities(e.target.value)}
                         />
                     </label>
-                    <label>
+                    <label className="add-image-input" id='new-spot-image-add'>
                         Show us your place!
                         <input
                             type="file"
@@ -174,6 +174,7 @@ function UpdateSpotForm() {
                             onChange={updateFile}
                         />
                     </label>
+                    <p id='add-spot-file-name'>{profileImg?.name}</p>
                 </div>
                 <div id='buttons'>
                     <button type="submit" id='submit-new-spot'>Update your spot!</button>

@@ -155,7 +155,6 @@ function Spot() {
                                         <p id='hosts-spot-text'>Your spot is online and accepting bookings.</p>
                                     </div>
                                 )}
-                                {/* NEED WAY TO SHOW YOU ALREADY HAVE A BOOKING FOR A SPOT */}
                             </div>
                         </div>
                     </div>

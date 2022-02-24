@@ -79,3 +79,10 @@
     font-size: 24px;
     margin-bottom: 0;
 }
+
+#new-spot-image-add {
+    width: 20%;
+    text-align: center;
+    align-self: center;
+    margin: 0;
+}
