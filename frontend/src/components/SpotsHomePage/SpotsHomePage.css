@@ -20,7 +20,7 @@ main {
             linear-gradient(336deg, rgba(0,0,255,100), rgba(0,0,255,0) 70.71%);
     border-radius: 10px;
     color: white;
-    width: 125%;
+    width: 100%;
 }
 
 #banner h1 {
