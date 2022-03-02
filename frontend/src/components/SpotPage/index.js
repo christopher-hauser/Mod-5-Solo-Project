@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
-import * as spotActions from "../../store/spots";
+import {useLocation, useParams } from "react-router-dom";
 import * as imageActions from "../../store/images";
 import BookingForm from "../BookingASpot";
 import { Modal } from "../../context/Modal";
@@ -12,22 +11,17 @@ import Carousel, { CarouselItem } from '../Carousel'
 import './SpotPage.css'
 
 function Spot() {
+    const location = useLocation();
+    const spot = location.state.spot;
     const dispatch = useDispatch();
-    const history = useHistory();
     const id = useParams().id;
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        dispatch(spotActions.getOneSpot(id));
+        dispatch(imageActions.clearImages())
         dispatch(imageActions.getAllSpotImages(id))
     }, [dispatch])
 
-
-    const spot = useSelector(state => {
-        if (state.spots.currentSpot) {
-            return state.spots.currentSpot
-        }
-    })
 
     const userId = useSelector(state => {
         if (state.session.user) {
