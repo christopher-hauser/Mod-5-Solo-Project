@@ -71,11 +71,21 @@ export const addNewSpot = newSpot => async dispatch => {
     return spot;
 }
 
+//ADD IMAGES TO SPOT
 export const getAllSpots = () => async dispatch => {
     const response = await csrfFetch('/api/spots')
 
     if (response.ok) {
         const spots = await response.json();
+
+        spots.map(async spot => {
+            const imageRes = await csrfFetch(`/api/images/${spot.id}`)
+
+            if (imageRes.ok) {
+                const images = await imageRes.json();
+                spot.images = images;
+            }
+        })
         dispatch(loadAllSpots(spots))
     }
     return response;

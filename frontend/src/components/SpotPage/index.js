@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
-import * as spotActions from "../../store/spots";
+import {useLocation, useParams } from "react-router-dom";
 import * as imageActions from "../../store/images";
 import BookingForm from "../BookingASpot";
 import { Modal } from "../../context/Modal";
@@ -12,22 +11,10 @@ import Carousel, { CarouselItem } from '../Carousel'
 import './SpotPage.css'
 
 function Spot() {
-    const dispatch = useDispatch();
-    const history = useHistory();
-    const id = useParams().id;
+    const location = useLocation();
+    const spot = location.state.spot;
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        dispatch(spotActions.getOneSpot(id));
-        dispatch(imageActions.getAllSpotImages(id))
-    }, [dispatch])
-
-
-    const spot = useSelector(state => {
-        if (state.spots.currentSpot) {
-            return state.spots.currentSpot
-        }
-    })
 
     const userId = useSelector(state => {
         if (state.session.user) {
@@ -35,22 +22,9 @@ function Spot() {
         }
     })
 
-    const images = useSelector(state => {
-        if (state.images) {
-            return state.images;
-        }
-    })
-
     const spotAmenitiesArray = spot?.amenities.split(', ')
-    console.log(spotAmenitiesArray)
 
-    const imageObjects = [];
-
-    for (let key in images) {
-        imageObjects.push(images[key]);
-    }
-
-    if (imageObjects.length < 2) {
+    if (spot.images.length < 2) {
         let leftArrow = document.getElementById('click-left');
         let rightArrow = document.getElementById('click-right');
 
@@ -84,10 +58,10 @@ function Spot() {
                                 <img alt='default' src={'https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'} className="spot-block-img" />
                             )}
                             <div id='other-images'>
-                                {images && (
+                                {spot.images && (
                                     <Carousel>
                                         <CarouselItem image={spotProfileImage}></CarouselItem>
-                                        {imageObjects.map(image => {
+                                        {spot.images.map(image => {
                                             return (
                                                 <CarouselItem image={image}></CarouselItem>
                                             )

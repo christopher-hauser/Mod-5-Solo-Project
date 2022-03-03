@@ -28,7 +28,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/" exact>
-            <SpotsHomePage />
+            <SpotsHomePage spots={{spots}} />
           </Route>
           <Route path="/signup">
             <SignupFormPage />

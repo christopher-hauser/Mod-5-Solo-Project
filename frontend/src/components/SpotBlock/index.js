@@ -16,7 +16,10 @@ function SpotBlock({ spot }) {
         key={spot.id}
         className="spot-block"
         >
-            <NavLink to={`/spots/${spot.id}`}>
+            <NavLink to={{
+                pathname: `/spots/${spot.id}`,
+                state: {'spot': spot}
+                }}>
                 <div className='spot-block-img-block'>
                     {spot.profileImg && (
                         <img alt={spot.description} src={spot.profileImg} className="spot-block-img"/>

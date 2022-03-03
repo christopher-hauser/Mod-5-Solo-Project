@@ -1,24 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import * as spotActions from "../../store/spots";
+import { useDispatch } from "react-redux";
 import SpotBlock from "../SpotBlock";
+import * as imageActions from "../../store/images";
 
 import './SpotsHomePage.css';
 
-function SpotsHomePage() {
-    const dispatch = useDispatch();
-
-    const spots = useSelector(state => state.spots);
-
-    useEffect(async () => {
-        await dispatch(spotActions.getAllSpots())
-        if (!spots) {
-            return null;
-        }
-        return;
-    }, [dispatch])
-
-    const spotsArr = Object.values(spots);
+function SpotsHomePage({ spots }) {
+    const spotsArr = Object.values(spots.spots);
 
     return (
         <main>
