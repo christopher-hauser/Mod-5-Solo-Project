@@ -22,6 +22,8 @@ function Spot() {
         }
     })
 
+    const addressSplit = spot.address.split(' ').join('+');
+
     const spotAmenitiesArray = spot?.amenities.split(', ')
 
     if (spot.images.length < 2) {
@@ -40,6 +42,8 @@ function Spot() {
         "image": spot?.profileImg,
         "profileImg": true
     }
+
+    const mapsAPIKey = process.env.MAPS_API_KEY
 
     if (spot) {
         return (
@@ -130,6 +134,13 @@ function Spot() {
                                     </div>
                                 )}
                             </div>
+                        </div>
+                        <div>
+                        <iframe margin-top="5%" width="100%" height="450" style={{border: 0}} loading="lazy" allowFullScreen
+                            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDwhm_HO8odbCdd3PJYTEw9AaIvFy4WmUA
+                            &q=${addressSplit},${spot.city}+${spot.state}`}>
+
+                            </iframe>
                         </div>
                     </div>
                 </div>
