@@ -7,12 +7,6 @@ import './SpotsHomePage.css';
 
 function SpotsHomePage({ spots }) {
     const spotsArr = Object.values(spots.spots);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log('triggered UseEffect')
-        dispatch(imageActions.clearImages())
-    }, [dispatch])
 
     return (
         <main>

@@ -91,7 +91,6 @@ router.get(
     asyncHandler(async (req, res) => {
         const spotId = req.params.id
         const bookings = await getAllBookingDates(spotId);
-        console.log(spotId);
         return res.json(bookings);
     })
 )

@@ -60,7 +60,6 @@ export const getAllSpotImages = (spotId) => async dispatch => {
 
     if (response.ok) {
         const images = await response.json();
-        console.log(images);
         dispatch(loadAllImages(images));
     }
     return response;
@@ -86,7 +85,6 @@ const imagesReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case ADD_IMAGE:
-            console.log(action.payload);
             newState = {
                 ...state,
                 [action.payload.newImage.id]: action.payload.newImage

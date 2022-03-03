@@ -25,7 +25,6 @@ function NewSpotImage() {
 
     const updateFile = e => {
         const file = e.target.files[0];
-        console.log(e.target.files[0]);
         if (file) setImage(file);
     }
 

@@ -13,14 +13,7 @@ import './SpotPage.css'
 function Spot() {
     const location = useLocation();
     const spot = location.state.spot;
-    const dispatch = useDispatch();
-    const id = useParams().id;
     const [showModal, setShowModal] = useState(false);
-
-    useEffect(() => {
-        dispatch(imageActions.clearImages())
-        dispatch(imageActions.getAllSpotImages(id))
-    }, [dispatch])
 
 
     const userId = useSelector(state => {
@@ -29,22 +22,9 @@ function Spot() {
         }
     })
 
-    const images = useSelector(state => {
-        if (state.images) {
-            return state.images;
-        }
-    })
-
     const spotAmenitiesArray = spot?.amenities.split(', ')
-    console.log(spotAmenitiesArray)
 
-    const imageObjects = [];
-
-    for (let key in images) {
-        imageObjects.push(images[key]);
-    }
-
-    if (imageObjects.length < 2) {
+    if (spot.images.length < 2) {
         let leftArrow = document.getElementById('click-left');
         let rightArrow = document.getElementById('click-right');
 
@@ -78,10 +58,10 @@ function Spot() {
                                 <img alt='default' src={'https://ebenezersuites.com/wp-content/uploads/2016/06/airbnb-logo-266x300@2x.png'} className="spot-block-img" />
                             )}
                             <div id='other-images'>
-                                {images && (
+                                {spot.images && (
                                     <Carousel>
                                         <CarouselItem image={spotProfileImage}></CarouselItem>
-                                        {imageObjects.map(image => {
+                                        {spot.images.map(image => {
                                             return (
                                                 <CarouselItem image={image}></CarouselItem>
                                             )

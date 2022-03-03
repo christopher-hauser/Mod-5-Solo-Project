@@ -13,9 +13,8 @@ export async function csrfFetch(url, options = {}) {
         }
         options.headers['XSRF-Token'] = Cookies.get('XSRF-TOKEN');
     }
-    
+
     const res = await window.fetch(url, options);
-    console.log(url, options)
 
     if (res.status >= 400) throw res;
 
