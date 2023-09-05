@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useLocation, useParams } from "react-router-dom";
-import * as imageActions from "../../store/images";
+import * as spotActions from "../../store/spots";
 import BookingForm from "../BookingASpot";
 import { Modal } from "../../context/Modal";
 import LoginForm from "../LoginFormModal/LoginForm";
@@ -14,6 +14,12 @@ function Spot() {
     const location = useLocation();
     const spot = location.state.spot;
     const [showModal, setShowModal] = useState(false);
+
+    const dispatch = useDispatch();
+
+    useEffect(async () => {
+        await dispatch(spotActions.getOneSpot(spot.id));
+    }, [dispatch])
 
 
     const userId = useSelector(state => {
@@ -121,7 +127,7 @@ function Spot() {
                                 )}
 
                                 {(userId && !(spot.hostId === userId)) && (
-                                    <BookingForm />
+                                    <BookingForm spot={spot}/>
                                 )}
 
                                 {(spot.hostId === userId) && (

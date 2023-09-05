@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import SpotBlock from "../SpotBlock";
-import * as imageActions from "../../store/images";
 
 import './SpotsHomePage.css';
 
 function SpotsHomePage({ spots }) {
-    const spotsArr = Object.values(spots.spots);
+    if (spots.spots['currentSpot']) {
+        delete spots.spots['currentSpot'];
+    }
+
+    let spotsArr = Object.values(spots.spots);
+
+    console.log(spotsArr);
 
     return (
         <main>

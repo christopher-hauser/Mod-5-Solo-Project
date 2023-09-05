@@ -10,7 +10,7 @@ function NewSpotImage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const userId = useSelector((state) => state.session.user.id);
-    const spotId = useSelector(state => state.spots.currentSpot.id);
+    const spotId = useSelector(state => state.spots.currentSpot?.id);
 
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState([]);
