@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useLocation, useParams } from "react-router-dom";
-import * as imageActions from "../../store/images";
+import * as spotActions from "../../store/spots";
 import BookingForm from "../BookingASpot";
 import { Modal } from "../../context/Modal";
 import LoginForm from "../LoginFormModal/LoginForm";
@@ -11,9 +11,15 @@ import Carousel, { CarouselItem } from '../Carousel'
 import './SpotPage.css'
 
 function Spot() {
+    const dispatch = useDispatch();
     const location = useLocation();
     const spot = location.state.spot;
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        dispatch(spotActions.getOneSpot(spot.id))
+        console.log(spot.id);
+    }, [])
 
 
     const userId = useSelector(state => {
@@ -67,7 +73,7 @@ function Spot() {
                                         <CarouselItem image={spotProfileImage}></CarouselItem>
                                         {spot.images.map(image => {
                                             return (
-                                                <CarouselItem image={image}></CarouselItem>
+                                                <CarouselItem image={image} key={`image-${image.id}`}></CarouselItem>
                                             )
                                         })}
                                     </Carousel>
@@ -135,13 +141,13 @@ function Spot() {
                                 )}
                             </div>
                         </div>
-                        <div>
+                        {/* <div>
                         <iframe margin-top="5%" width="100%" height="450" style={{border: 0}} loading="lazy" allowFullScreen
                             src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDwhm_HO8odbCdd3PJYTEw9AaIvFy4WmUA
                             &q=${addressSplit},${spot.city}+${spot.state}`}>
 
                             </iframe>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </>

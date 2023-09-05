@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as imageActions from "../../store/images";
-import Spot from "../SpotPage";
 
 import './style.css'
 
@@ -10,10 +9,9 @@ function NewSpotImage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const userId = useSelector((state) => state.session.user.id);
-    const spotId = useSelector(state => state.spots.currentSpot.id);
+    const spotId = useSelector(state => state.spots.currentSpot?.id);
 
     const [image, setImage] = useState(null);
-    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -37,7 +35,7 @@ function NewSpotImage() {
                 required
             />
             <div id='flex-container'>
-                <label for='add-image-input' className="add-image-input">
+                <label htmlFor='add-image-input' className="add-image-input">
                     Choose File
                 </label>
                 <p id='file-name'>{image?.name}</p>

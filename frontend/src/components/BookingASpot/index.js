@@ -3,7 +3,6 @@ import * as bookingActions from '../../store/bookings';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import { addDays } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 import './BookingASpot.css';
 
@@ -11,7 +10,7 @@ import './BookingASpot.css';
 function BookingForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const spotId = useSelector(state => state.spots.currentSpot.id);
+    const spotId = useSelector(state => state.spots.currentSpot?.id);
     const spot = useSelector(state => state.spots.currentSpot)
     const guestId = useSelector(state => {
         if (state.session.user) {
@@ -23,7 +22,7 @@ function BookingForm() {
     const [endDate, setEndDate] = useState(null);
     const [errors, setErrors] = useState([]);
     const [bookedDates, setBookedDates] = useState([]);
-    const [currentPrice, setCurrentPrice] = useState(spot.pricePerNight);
+    const [currentPrice, setCurrentPrice] = useState(spot?.pricePerNight);
 
     //helper functions
     function countDays(start, end) {
@@ -57,7 +56,7 @@ function BookingForm() {
         let bookingDates = [];
 
 
-        bookings?.map(booking => {
+        bookings.map(booking => {
             let start = booking.startDate;
             let end = booking.endDate;
             let dateArray = getDates(start, end);
