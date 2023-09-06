@@ -14,6 +14,8 @@ export async function csrfFetch(url, options = {}) {
         options.headers['XSRF-Token'] = Cookies.get('XSRF-TOKEN');
     }
 
+    url = process.env.NODE_ENV === 'development' ? url : `https://aa-rarebnb.onrender.com/${url}`;
+
     const res = await window.fetch(url, options);
 
     if (res.status >= 400) throw res;
