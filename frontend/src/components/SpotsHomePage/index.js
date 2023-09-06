@@ -8,9 +8,11 @@ function SpotsHomePage({ spots }) {
         delete spots.spots['currentSpot'];
     }
 
-    let spotsArr = Object.values(spots.spots);
+    if (spots.spots['updatedSpot']) {
+        delete spots.spots['updatedSpot'];
+    }
 
-    console.log(spotsArr);
+    let spotsArr = Object.values(spots.spots);
 
     return (
         <main>

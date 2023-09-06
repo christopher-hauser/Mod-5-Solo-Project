@@ -30,7 +30,7 @@ function Spot() {
 
     const spotAmenitiesArray = spot?.amenities.split(', ')
 
-    if (spot.images.length < 2) {
+    if (spot.images?.length < 2) {
         let leftArrow = document.getElementById('click-left');
         let rightArrow = document.getElementById('click-right');
 

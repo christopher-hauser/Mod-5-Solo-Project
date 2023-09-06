@@ -80,7 +80,9 @@ router.put(
     validateNewSpot,
     asyncHandler(async (req, res) => {
         const { id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities } = req.body;
-        const profileImg = await singlePublicFileUpload(req.file);
+        const currentSpot = await getOneSpot(id);
+
+        const profileImg = req.file ? await singlePublicFileUpload(req.file) : currentSpot.profileImg;
         const updatedSpot = await updateSpot(id, hostId, address, city, state, pricePerNight, bedrooms, beds, bathrooms, description, amenities, profileImg)
         return res.json({
             updatedSpot
