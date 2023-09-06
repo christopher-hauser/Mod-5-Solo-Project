@@ -10,7 +10,9 @@
     "dev:frontend": "npm install --prefix frontend start",
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend"
+    "server": "npm start --prefix backend",
+    "client": "npm start --prefix frontend",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/christopher-hauser/Mod-5-Solo-Project#readme",
   "dependencies": {
-    "aws-sdk": "^2.1076.0"
+    "aws-sdk": "^2.1076.0",
+    "concurrently": "^8.2.1"
   }
 }
