@@ -23,7 +23,7 @@ if (!isProduction) {
     app.use(cors());
 } else {
     app.use(cors({
-        origin: "https://rare-bnb-app.onrender.com/",
+        origin: "https://rare-bnb-app.onrender.com",
         headers: ["Content-Type"],
         credentials: true,
     }))
