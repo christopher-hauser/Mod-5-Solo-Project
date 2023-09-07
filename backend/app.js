@@ -21,6 +21,12 @@ app.use(express.json());
 
 if (!isProduction) {
     app.use(cors());
+} else {
+    app.use(cors({
+        origin: "https://rare-bnb-app.onrender.com/",
+        headers: ["Content-Type"],
+        credentials: true,
+    }))
 }
 
 app.use(helmet({
