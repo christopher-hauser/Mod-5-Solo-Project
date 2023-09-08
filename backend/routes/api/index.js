@@ -2,8 +2,9 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const spotsRouter = require('./spots.js');
-const bookingsRouter = require('./bookings.js')
-const imagesRouter = require('./images.js')
+const bookingsRouter = require('./bookings.js');
+const imagesRouter = require('./images.js');
+const csrfRouter = require('./csrf.js');
 
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
