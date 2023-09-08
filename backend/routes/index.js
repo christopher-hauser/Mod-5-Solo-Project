@@ -7,11 +7,11 @@ router.use('/api', apiRouter)
 if (process.env.NODE_ENV === 'production') {
     const path = require('path');
 
+    console.log(__dirname, '../../frontend', 'build', 'index.html');
+    console.log(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
+
     router.get('/', (req, res) => {
         res.cookie('XSRF-TOKEN', req.csrfToken());
-        console.log(__dirname, '../../frontend', 'build', 'index.html');
-
-        console.log(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
         return res.sendFile(
             path.resolve(__dirname, '../../frontend', 'build', 'index.html')
         );
@@ -21,8 +21,6 @@ if (process.env.NODE_ENV === 'production') {
 
     router.get(/^(?!\/?api).*/, (req, res) => {
         res.cookie('XSRF-TOKEN', req.csrfToken());
-        console.log(__dirname, '../../frontend', 'build', 'index.html');
-        console.log(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
         return res.sendFile(
             path.resolve(__dirname, '../../frontend', 'build', 'index.html')
         );
