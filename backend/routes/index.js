@@ -9,6 +9,9 @@ if (process.env.NODE_ENV === 'production') {
 
     router.get('/', (req, res) => {
         res.cookie('XSRF-TOKEN', req.csrfToken());
+        console.log(__dirname, '../../frontend', 'build', 'index.html');
+
+        console.log(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
         return res.sendFile(
             path.resolve(__dirname, '../../frontend', 'build', 'index.html')
         );
@@ -18,6 +21,8 @@ if (process.env.NODE_ENV === 'production') {
 
     router.get(/^(?!\/?api).*/, (req, res) => {
         res.cookie('XSRF-TOKEN', req.csrfToken());
+        console.log(__dirname, '../../frontend', 'build', 'index.html');
+        console.log(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
         return res.sendFile(
             path.resolve(__dirname, '../../frontend', 'build', 'index.html')
         );
